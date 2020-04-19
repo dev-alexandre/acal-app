@@ -1,37 +1,51 @@
 <div id="wrapper">
 	<div class="vertical-align-wrap">
 		<div class="vertical-align-middle auth-main">
-			<div class="auth-box">
-				<div class="top">
+      
+      <div class="auth-box">
+
+        <div class="top">
 					<img src="assets/images/logo-white.svg" alt="Lucid">
 				</div>
-				<div class="card">
-					<div class="header">
-						<p class="lead">Login to your account</p>
-					</div>
+
+        <div class="card">
+          
+            <div class="header">
+						<p class="lead">Entrar</p>
+          </div>
+          
 					<div class="body">
-						<form class="form-auth-small" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          
+            <form class="form-auth-small" #loginForm="ngForm" (ngSubmit)="onSubmit()">
 							<div class="form-group">
-								<label for="signin-email" class="control-label sr-only">Email</label>
-								<input type="email" class="form-control" id="signin-email" value="user@domain.com" placeholder="Email">
+								<label for="signin-email" class="control-label sr-only">Usúario</label>
+								<input type="email" class="form-control" id="signin-email" value="user@domain.com" placeholder="usuario">
 							</div>
-							<div class="form-group">
-								<label for="signin-password" class="control-label sr-only">Password</label>
-								<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
-							</div>
+              
+              <div class="form-group">
+								<label for="signin-password" class="control-label sr-only">Senha</label>
+								<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Senha">
+              </div>
+              
 							<div class="form-group clearfix">
 								<label class="fancy-checkbox element-left">
 									<input type="checkbox">
-									<span>Remember me</span>
+									<span>Lembre-se de mim</span>
 								</label>
 							</div>
-							<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+              
+              <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+              
 							<div class="bottom">
-								<span class="helper-text m-b-10"><i class="fa fa-lock"></i>&nbsp;<a [routerLink]="['/authentication/page-forgot-password']">Forgot
-										password?</a></span>
-								<span>Don't have an account? <a [routerLink]="['/authentication/page-register']">Register</a></span>
-							</div>
-						</form>
+              
+                <span class="helper-text m-b-10">
+                  <i class="fa fa-lock"></i>&nbsp;
+                  <a [routerLink]="['/authentication/page-forgot-password']">Esqueci a senha?</a></span>
+								<span>Não tenho uma conta <a [routerLink]="['/authentication/page-register']">Registrar</a></span>
+              
+              </div>
+            </form>
+            
 					</div>
 				</div>
 			</div>

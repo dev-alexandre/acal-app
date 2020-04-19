@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-	selector: 'app-page-login',
-	templateUrl: './page-login.component.html',
-	styleUrls: ['./page-login.component.css']
+  selector: 'app-page-login',
+  templateUrl: './page-login.component.html'
 })
+
 export class PageLoginComponent implements OnInit {
 
-	constructor(private router: Router) { }
+  constructor(private router: Router) { }
 
-	ngOnInit() {
-	}
+  ngOnInit() {
+  }
 
-	onSubmit(){
-		this.router.navigate(['/admin/dashboard/index']);
-	}
+  onSubmit(){
+    this.router.navigate(['/admin/dashboard/index']);
+  }
+
 }
+
