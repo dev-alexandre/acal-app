@@ -3,15 +3,16 @@
         <div class="user-account">
             <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown" ngbDropdown>
-                <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alizee
+              <span>Welcome,</span>
+              
+              <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alizee
                         Thomas</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
                     <li><a [routerLink]="['/admin/pages/page-profile2']"><i class="icon-user"></i>My Profile</a></li>
                     <li><a [routerLink]="['/admin/app/app-inbox']"><i class="icon-envelope-open"></i>Messages</a></li>
                     <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
                     <li class="divider"></li>
-                    <li><a [routerLink]="['/authentication/page-login']"><i class="icon-power"></i>Logout</a></li>
+                    <li><a (click)="onLogout()"><i class="icon-power"></i>Logout</a></li>
                 </ul>
             </div>
             <hr>

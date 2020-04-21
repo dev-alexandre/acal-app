@@ -47,19 +47,20 @@ import { WidgetsDataComponent } from '../widgets/widgets-data/widgets-data.compo
 import { IotDashboardComponent } from './iot-dashboard/iot-dashboard.component';
 import { BlogPostComponent } from '../blogs/blog-post/blog-post.component';
 import { PageLeafletComponent } from '../maps/page-leaflet/page-leaflet.component';
+import { AuthGuard } from './../_autenticacao/_helpers/auth.guard';
 
-const routes: Routes = [   
+const routes: Routes = [
     {
         path: '',
-        component: AdminComponent,
+        component: AdminComponent, canActivate: [AuthGuard],
         children: [
-            { path: '', redirectTo:'dashboard'},
+            { path: '', redirectTo: 'dashboard'},
             {
                 path: 'dashboard',
                 children: [
                     { path: '', redirectTo: 'index', pathMatch: 'full' },
-                    { path: 'index', component: IndexComponent, data: { title: ':: Lucid Angular :: Dashboard :: Analytical ::' } },
-                    { path: 'iot', component: IotDashboardComponent, data: { title: ':: Lucid Angular :: Dashboard :: IoT ::' } },
+                    { path: 'index', canActivate: [AuthGuard], component: IndexComponent, data: { title: ':: Lucid Angular :: Dashboard :: Analytical ::' } },
+                    { path: 'iot', canActivate: [AuthGuard], component: IotDashboardComponent, data: { title: ':: Lucid Angular :: Dashboard :: IoT ::' } },
                 ]
             },
             { 

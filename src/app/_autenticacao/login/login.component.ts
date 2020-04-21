@@ -6,11 +6,11 @@ import { AutenticacaoService } from '../../_autenticacao/service/autenticacao.se
 
 
 @Component({
-  selector: 'app-page-login',
-  templateUrl: './page-login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html'
 })
 
-export class PageLoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   loading = false;
@@ -22,8 +22,8 @@ export class PageLoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private authenticationService: AutenticacaoService) {
-
+    private authenticationService: AutenticacaoService
+    ) {
       if (this.authenticationService.currentUserValue) {
         this.router.navigate(['/']);
       }
@@ -36,7 +36,7 @@ export class PageLoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin/dashboard/index';
   }
 
   onSubmit() {
@@ -48,16 +48,16 @@ export class PageLoginComponent implements OnInit {
 
       this.loading = true;
       this.authenticationService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate([this.returnUrl]);
-            },
-            error => {
-              this.error = error;
-              this.loading = false;
-            }
-          );
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        }
+      );
   }
 
   get f() {
