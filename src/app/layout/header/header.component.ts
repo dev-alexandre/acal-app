@@ -11,17 +11,32 @@ import { AutenticacaoService } from '../../_autenticacao/service/autenticacao.se
 
 export class HeaderComponent implements OnInit {
 
-  @Input() showNotifMenu: boolean = false;
-  @Input() showToggleMenu: boolean = false;
-  @Input() darkClass:string = '';
-  @Output() toggleSettingDropMenuEvent = new EventEmitter();
-  @Output() toggleNotificationDropMenuEvent = new EventEmitter();
+  @Input()
+  public showNotifMenu: boolean ;
+
+  @Input()
+  public showToggleMenu: boolean;
+
+  @Input()
+  public darkClass: string;
+
+  @Output()
+  public toggleSettingDropMenuEvent: EventEmitter<any>;
+
+  @Output()
+  public toggleNotificationDropMenuEvent: EventEmitter<any>;
 
   constructor(
     public autenciacaoService: AutenticacaoService,
     private config: NgbDropdownConfig,
     private themeService: ThemeService) {
     config.placement = 'bottom-right';
+
+      this.showNotifMenu = false;
+      this.showToggleMenu = false;
+      this.darkClass = '';
+      this.toggleSettingDropMenuEvent = new EventEmitter();
+      this.toggleNotificationDropMenuEvent = new EventEmitter();
   }
 
   ngOnInit() {

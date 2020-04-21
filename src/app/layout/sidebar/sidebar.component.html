@@ -1,79 +1,137 @@
 <div id="left-sidebar" class="sidebar" *ngIf="sidebarVisible" style="overflow-y:scroll;">
-    <div class="sidebar-scroll">
-        <div class="user-account">
-            <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
-            <div class="dropdown" ngbDropdown>
-              <span>Welcome,</span>
-              
-              <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alizee
-                        Thomas</strong></a>
-                <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
-                    <li><a [routerLink]="['/admin/pages/page-profile2']"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a [routerLink]="['/admin/app/app-inbox']"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
-                    <li class="divider"></li>
-                    <li><a (click)="onLogout()"><i class="icon-power"></i>Logout</a></li>
-                </ul>
-            </div>
-            <hr>
-            <ul class="row list-unstyled">
-                <li class="col-4">
-                    <small>Sales</small>
-                    <h6>456</h6>
-                </li>
-                <li class="col-4">
-                    <small>Order</small>
-                    <h6>1350</h6>
-                </li>
-                <li class="col-4">
-                    <small>Revenue</small>
-                    <h6>$2.13B</h6>
-                </li>
-            </ul>
-        </div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')"><i
-                        class="icon-book-open"></i></a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')"><i
-                        class="icon-settings"></i></a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')"><i
-                        class="icon-question"></i></a></li>
+  <div class="sidebar-scroll">
+    <div class="user-account">
+  
+      <!--
+        <img src="assets/images/user.png" 
+        class="rounded-circle user-photo" 
+        alt="User Profile Picture"
+        >
+      -->
+        
+      <div class="dropdown" ngbDropdown>
+        <span>Bem vindo,</span>
+            
+        <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle>
+          <strong>{{user.nome}}</strong>
+        </a>
+        
+        <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
+          
+          <li>
+            <a [routerLink]="['/admin/pages/page-profile2']">
+              <i class="icon-user"></i>
+              My Profile
+            </a>
+          </li>
+          
+          <li><a [routerLink]="['/admin/app/app-inbox']"><i class="icon-envelope-open"></i>Messages</a></li>
+          <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+          <li class="divider"></li>
+          <li><a (click)="onLogout()"><i class="icon-power"></i>Logout</a></li>
         </ul>
+      
+      </div>
+        
+      <hr>
+           
+      <ul class="row list-unstyled">
+      
+        <li class="col-4">
+          <small>Sales</small>
+          <h6>456</h6>
+        </li>
+      
+        <li class="col-4">
+          <small>Order</small>
+          <h6>1350</h6>
+        </li>
+        
+        <li class="col-4">
+          <small>Revenue</small>
+          <h6>$2.13B</h6>
+          </li>
+      </ul>
+  </div>
 
-        <!-- Tab panes -->
-        <div class="tab-content p-l-0 p-r-0">
-            <div class="tab-pane" id="menu" [ngClass]="{'active':navTab == 'menu' || !navTab}">
-                <nav id="left-sidebar-nav" class="sidebar-nav">
-                    <ul id="main-menu" class="metismenu">
-                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'dashboard'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('dashboard')"><i class="icon-home"></i>
-                                <span>Dashboard</span></a>
-                            <ul *ngIf="currentActiveMenu == 'dashboard'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Analytical</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">IoT</a></li>
-                            </ul>
-                        </li>
-                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'app'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('app')"><i class="icon-grid"></i> <span>App</span></a>
-                            <ul *ngIf="currentActiveMenu == 'app'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-inbox']">Inbox</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-chat']">Chat</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-calendar']">Calendar</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-contact-grid']">Contact
-                                        Card <span class="badge badge-warning float-right">New</span></a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'file-manager'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('file-manager')"><i class="icon-folder"></i>
-                                <span>File Manager</span></a>
-                            <ul *ngIf="currentActiveMenu == 'file-manager'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">Documents</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-media']">Media</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-images']">Images</a></li>
-                            </ul>
-                        </li>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">
+        Menu
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')">
+        <i class="icon-book-open"></i>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')">
+        <i class="icon-settings"></i>
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')">
+        <i class="icon-question"></i>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content p-l-0 p-r-0">
+    <div class="tab-pane" id="menu" [ngClass]="{'active':navTab == 'menu' || !navTab}">
+  
+      <nav id="left-sidebar-nav" class="sidebar-nav">
+        <ul id="main-menu" class="metismenu">
+          
+          <li *ngFor="let m of menu" 
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{exact: true}" 
+            [ngClass]="{'active':currentActiveMenu == m.nome}">
+            
+            <a class="has-arrow" (click)="activeInactiveMenu(m.nome)">
+              <i class="icon-home"></i>
+              <span>{{m.titulo}}</span>
+            </a>
+
+            <ng-container *ngFor="let item of m.itens">
+              
+              <ul  *ngIf="currentActiveMenu == m.nome">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  <a [routerLink]="[item.link]">{{item.titulo}}</a>
+                </li>
+              </ul>
+
+            </ng-container>
+
+          </li>
+
+          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'app'}">
+            <a class="has-arrow" (click)="activeInactiveMenu('app')"><i class="icon-grid"></i> <span>App</span></a>
+            <ul *ngIf="currentActiveMenu == 'app'">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-inbox']">Inbox</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-chat']">Chat</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-calendar']">Calendar</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-contact-grid']">Contact
+                        Card <span class="badge badge-warning float-right">New</span></a></li>
+            </ul>
+          </li>
+
+          <li [ngClass]="{'active':currentActiveMenu == 'file-manager'}">
+              <a class="has-arrow" (click)="activeInactiveMenu('file-manager')"><i class="icon-folder"></i>
+                  <span>File Manager</span></a>
+              <ul *ngIf="currentActiveMenu == 'file-manager'">
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">Documents</a></li>
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-media']">Media</a></li>
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-images']">Images</a></li>
+              </ul>
+          </li>
+          
                         <li [ngClass]="{'active':currentActiveMenu == 'blogs'}">
                             <a class="has-arrow" (click)="activeInactiveMenu('blogs')"><i class="icon-globe"></i>
                                 <span>Blog</span></a>
