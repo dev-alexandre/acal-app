@@ -1,6 +1,10 @@
-enum FuncaoEnum {
+export enum FuncaoEnum {
 
-  Especialista,
-  Gerente,
+  Especialista = 'Especialista',
+  Gerente = 'Gerente',
+  Atendente = 'Atendente',
+  Caixa = 'Caixa',
+  Tesoureiro = 'Tesoureiro',
+  Presidente = 'Presidente',
 
 }

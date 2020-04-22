@@ -130,33 +130,33 @@
       </tr>
     </thead>
     
-    <tbody *ngFor="let analise of table.content">
+    <tbody >
+      <ng-container *ngFor="let analise of table.content">
+        <tr *ngFor="let coleta of analise.coletas; let indexOf = index">
 
-      <tr *ngFor="let coleta of analise.coletas; let indexOf = index" (click)="visualizar(analise)">
+          <td [attr.rowspan]="analise.coletas.length" *ngIf="indexOf === 0">
+            <button type="button" (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>  
+    
+          <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0">
+            <button type="button" (click)="excluir(analise)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+              <i class="fa fa-times"></i>
+            </button>
+          </td>
 
-        <td [attr.rowspan]="analise.coletas.length" *ngIf="indexOf === 0">
-          <button type="button" (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
-            <i class="fa fa-pencil"></i>
-          </button>
-        </td>  
-  
-        <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0">
-          <button type="button" (click)="excluir(analise)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
-            <i class="fa fa-times"></i>
-          </button>
-        </td>
+          <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0"> 
+            {{analise.referencia.mes}}/{{analise.referencia.ano}} 
+          </td>
+          
+          <td> {{coleta.parametro.nome}} </td>
+          <td> {{coleta.exigido}} </td>
+          <td> {{coleta.analisado}} </td>
+          <td> {{coleta.conforme}} </td>
 
-        <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0"> 
-          {{analise.referencia.mes}}/{{analise.referencia.ano}} 
-        </td>
-        
-        <td> {{coleta.parametro.nome}} </td>
-        <td> {{coleta.exigido}} </td>
-        <td> {{coleta.analisado}} </td>
-        <td> {{coleta.conforme}} </td>
-
-      </tr>
-      
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 

@@ -4,6 +4,8 @@ import { AnaliseEditarComponent } from './editar/analise.editar.component';
 import { AnaliseExcluirComponent } from './excluir/analise.excluir.component';
 import { AnaliseIncluirComponent } from './incluir/analise.incluir.component';
 import { AnaliseListarComponent } from './listar/analise.listar.component';
+import { AuthGuard } from '@app/_autenticacao/_helpers/auth.guard';
+import { FuncaoEnum } from '@app/_autenticacao/enum/funcao.enum';
 
 
 const routes: Routes = [
@@ -18,26 +20,38 @@ const routes: Routes = [
 
         {
           path: 'editar',
+          canActivate: [AuthGuard],
           component: AnaliseEditarComponent,
           data: { title: ':: Acal Web :: Análise :: Editar ::' }
         },
 
         {
           path: 'excluir',
+          canActivate: [AuthGuard],
           component: AnaliseExcluirComponent,
           data: { title: ':: Acal Web :: Análise :: Excluir ::' }
         },
 
         {
           path: 'incluir',
+          canActivate: [AuthGuard],
           component: AnaliseIncluirComponent,
-          data: { title: ':: Acal Web :: Análise :: Incluir ::' }
+          data:
+          {
+            roles: [FuncaoEnum.Atendente, FuncaoEnum.Especialista],
+            title: ':: Acal Web :: Análise :: Incluir ::'
+          }
         },
 
         {
           path: 'listar',
+          canActivate: [AuthGuard],
           component: AnaliseListarComponent,
-          data: { title: ':: Acal Web :: Análise :: Listar ::' }
+          data:
+          {
+            roles: [FuncaoEnum.Atendente, FuncaoEnum.Especialista],
+            title: ':: Acal Web :: Análise :: Listar ::'
+          }
         },
 
       ]

@@ -11,6 +11,9 @@ import { AnaliseEditarComponent } from './editar/analise.editar.component';
 import { AnaliseExcluirComponent } from './excluir/analise.excluir.component';
 import { AnaliseIncluirComponent } from './incluir/analise.incluir.component';
 import { AnaliseListarComponent } from './listar/analise.listar.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
 
 @NgModule({
   imports:
@@ -37,6 +40,8 @@ import { AnaliseListarComponent } from './listar/analise.listar.component';
     AnaliseService,
     ParametroService,
     MesService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]
 })
 
