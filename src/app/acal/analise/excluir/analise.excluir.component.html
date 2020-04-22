@@ -1,0 +1,86 @@
+<div class="form-group">
+  <div class="row clearfix">
+    <div class="col-12">
+      <div class="card" *ngIf="analise" >
+
+        <div class="header">
+          <h2>Excluir Análise</h2>
+        </div>
+
+        <div class="body">
+          <div class="row">
+
+            <div class="col-md-3 col-6 form-group" >
+              <label>* mês:</label>
+              <input class="form-control" [(ngModel)]="analise.referencia.mes" [disabled]= "true">
+            </div>
+
+            <div class="col-md-3 col-6 form-group">
+              <label>* ano:</label>
+              <input class="form-control" [(ngModel)]="analise.referencia.ano" [disabled]= "true">
+            </div>
+
+          </div>
+
+            <hr/>
+            
+            <div class="row">
+              <div class="col-md-3 col-12"><label>Parâmetro:</label></div>
+              <div class="col-md-3 col-4"><label>Exigido:</label> </div>
+              <div class="col-md-3 col-4"><label>Analisado:</label></div>
+              <div class="col-md-3 col-4"><label>Conforme:</label></div>
+            </div>
+
+            <div class="row" *ngFor="let coleta of analise.coletas let i = index;">
+                
+              <div class="col-md-3 col-12 form-group">
+                {{coleta.parametro.nome}}
+              </div>
+
+              <div class="col-md-3 col-4 form-group">
+                <input 
+                  class="form-control" 
+                  [disabled]= "true"
+                  [(ngModel)]="coleta.analisado"
+                >
+              </div>
+              
+              <div class="col-md-3 col-4 form-group">
+                <input 
+                  class="form-control" 
+                  [disabled]= "true"
+                  [(ngModel)]="coleta.exigido"
+                >
+              </div>
+              
+              <div class="col-md-3 col-4 form-group">
+                <input 
+                  class="form-control" 
+                  [disabled]= "true"
+                  [(ngModel)]="coleta.conforme"
+                >
+              </div>
+
+            </div>
+
+            <hr/>
+
+          </div>
+            
+          <div class="footer">
+            
+            <div class="col mb-3">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+                <button class="btn btn-outline-danger"    (click)="excluir()" type="button" >Excluir</button>
+              </div>
+            </div>
+            
+          </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+

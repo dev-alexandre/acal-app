@@ -1,7 +1,6 @@
-﻿import { AutenticacaoModule } from './_autenticacao/autenticacao.module';
-
-import { Routes, RouterModule } from '@angular/router';
+﻿import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
+import { AuthGuard } from './_autenticacao/_helpers/auth.guard';
 
 export const routes: Routes =
 [
@@ -9,22 +8,22 @@ export const routes: Routes =
   {
     path: '',
     loadChildren:
-      () => import('app/_autenticacao/autenticacao.module').then(m => m.AutenticacaoModule)
+      () => import('app/_autenticacao/autenticacao.module')
+        .then(m => m.AutenticacaoModule)
   },
 
   {
-    path: 'admin',
+    path: 'acal' , canActivate: [AuthGuard],
+    loadChildren:
+      () => import('app/acal/acal.module')
+        .then(m => m.AcalModule)
+  },
+
+  {
+    path: 'admin' , canActivate: [AuthGuard],
     loadChildren:
       () => import('app/admin/admin.module').then(m => m.AdminModule)
   },
-
-  /* 
-  {
-    path: 'authentication',
-    loadChildren:
-    () => import('app/authentication/authentication.module').then(m => m.AuthenticationModule)
-  },
-  */
 
   { path: '**', redirectTo: '' }
 

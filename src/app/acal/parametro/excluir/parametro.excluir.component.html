@@ -1,0 +1,37 @@
+<div class="row clearfix">
+  <div class="col-12">
+
+    <div class="card">
+      
+      <div class="header">
+        <h2>Visualizar Parâmetro</h2>
+      </div>
+
+      <div class="body">
+
+        <div class="form-group">
+          <label>Nome:</label>
+          <input  
+            [disabled]="true"
+            [(ngModel)]="parametro.nome" 
+            class="form-control " 
+            name="text" 
+            >
+        </div>
+
+      </div>
+
+
+      <div class="footer mb-4">
+          
+        <div class="col">
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+            <button class="btn btn-outline-danger" type="button" (click)="excluir()" >Excluir</button>
+          </div>
+        </div>
+     
+    </div>
+
+  </div>
+</div>

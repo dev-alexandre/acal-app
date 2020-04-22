@@ -104,12 +104,12 @@ export class SidebarComponent implements OnInit , OnDestroy {
     cadastro.itens = [];
 
     const parametro = new Item();
-    parametro.link = '/acal/cadastro/parametro';
-    parametro.titulo = 'Parametro';
+    parametro.link = '/acal/parametro/listar';
+    parametro.titulo = 'Parâmetro';
 
     const analise = new Item();
-    analise.link = '/acal/cadastro/analise';
-    analise.titulo = 'analise';
+    analise.link = '/acal/analise/listar';
+    analise.titulo = 'Análise';
 
     cadastro.itens.push(parametro);
     cadastro.itens.push(analise);

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AutenticacaoService {
 
   private currentUserSubject: BehaviorSubject<User>;
@@ -40,7 +41,7 @@ export class AutenticacaoService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
     this.router.navigate([ './incluir' ], { relativeTo: this.activeRouter.parent });
-
   }
+
 
 }

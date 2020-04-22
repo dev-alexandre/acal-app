@@ -1,0 +1,6 @@
+enum FuncaoEnum {
+
+  Especialista,
+  Gerente,
+
+}

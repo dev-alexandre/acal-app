@@ -1,0 +1,164 @@
+<app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
+
+  <table class="table table-hover table-bordered table-sm">
+    <thead class="thead-light">
+      <tr>
+
+        <th colspan="2">
+          
+          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-sm btn-block">
+            <i class="fa fa-plus"></i>
+          </button>
+
+        </th>
+
+        <th (click)="ordernar('referencia')" >
+          
+          <div class="d-flex justify-content-between align-items-center">
+            
+            <div class="align-items-center">
+              Refêrencia
+            </div>
+            
+            <div>
+              <i class="icon-arrow-up" *ngIf="filtro.referencia.orderAsc && filtro.referencia.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.referencia.orderAsc && filtro.referencia.orderAsc !== null"></i>
+            </div>
+          
+          </div>
+         
+        </th>
+
+        <th class="align-items-center" (click)="ordernar('parametro')" >
+          <div class="d-flex justify-content-between  align-items-center">
+            Parâmetro
+            
+            <div *ngIf="filtro.coleta.parametro.nome.orderAsc !== null">
+              <i class="icon-arrow-up" *ngIf="filtro.coleta.parametro.nome.orderAsc"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.coleta.parametro.nome.orderAsc"></i>
+            </div>
+          </div> 
+        
+        </th>
+        
+        <th class="align-items-center" (click)="ordernar('exigido')" >
+          <div class="d-flex justify-content-between  align-items-center">
+            Exigido
+            
+            <div *ngIf="filtro.coleta.exigido.orderAsc !== null">
+              <i class="icon-arrow-up" *ngIf="filtro.coleta.exigido.orderAsc"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.coleta.exigido.orderAsc"></i>
+            </div>
+          </div> 
+        </th>
+        
+        <th class="align-items-center" (click)="ordernar('analisado')" >
+          <div class="d-flex justify-content-between  align-items-center">
+            Análisado
+            
+            <div *ngIf="filtro.coleta.analisado.orderAsc !== null">
+              <i class="icon-arrow-up" *ngIf="filtro.coleta.analisado.orderAsc"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.coleta.analisado.orderAsc"></i>
+            </div>
+          </div> 
+        </th>
+
+        <th class="align-items-center" (click)="ordernar('conforme')" >
+          <div class="d-flex justify-content-between  align-items-center">
+            Conforme
+            
+            <div *ngIf="filtro.coleta.conforme.orderAsc !== null">
+              <i class="icon-arrow-up" *ngIf="filtro.coleta.conforme.orderAsc"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.coleta.conforme.orderAsc"></i>
+            </div>
+          </div> 
+        </th>
+
+      </tr>
+    </thead>
+
+   
+    <thead>
+      <tr>
+
+        <th colspan="2" >
+          <button type="button" class="btn btn-success btn-sm btn-block">
+            Buscar
+          </button>
+        </th>
+
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.referencia.referencia.valor" 
+            (keyup.enter)="onEnter()" 
+          />
+        </th>
+
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.coleta.parametro.nome.valor" 
+            (keyup.enter)="onEnter()" 
+          />
+        </th>
+        
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.coleta.exigido.valor" 
+            (keyup.enter)="onEnter()" 
+          />
+        </th>
+        
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.coleta.analisado.valor" 
+            (keyup.enter)="onEnter()" 
+          />
+        </th>
+        
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.coleta.conforme.valor" 
+            (keyup.enter)="onEnter()" 
+          />
+        </th>
+
+      </tr>
+    </thead>
+    
+    <tbody *ngFor="let analise of table.content">
+
+      <tr *ngFor="let coleta of analise.coletas; let indexOf = index" (click)="visualizar(analise)">
+
+        <td [attr.rowspan]="analise.coletas.length" *ngIf="indexOf === 0">
+          <button type="button" (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+            <i class="fa fa-pencil"></i>
+          </button>
+        </td>  
+  
+        <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0">
+          <button type="button" (click)="excluir(analise)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+            <i class="fa fa-times"></i>
+          </button>
+        </td>
+
+        <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0"> 
+          {{analise.referencia.mes}}/{{analise.referencia.ano}} 
+        </td>
+        
+        <td> {{coleta.parametro.nome}} </td>
+        <td> {{coleta.exigido}} </td>
+        <td> {{coleta.analisado}} </td>
+        <td> {{coleta.conforme}} </td>
+
+      </tr>
+      
+    </tbody>
+  </table>
+
+</app-table>
+

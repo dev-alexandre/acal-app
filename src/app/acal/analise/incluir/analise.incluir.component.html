@@ -1,0 +1,137 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
+
+  <div class="form-group">
+    <div class="row clearfix">
+      <div class="col-12">
+
+        <div class="card">
+
+          <div class="header">
+            <h2>Incluir Análise</h2>
+          </div>
+
+          <div class="body">
+
+            <div class="row" formGroupName="referencia">
+
+              <div class="col-md-3 col-6 form-group" >
+                <label>* mês:</label>
+
+                <select 
+                  formControlName="mes"
+                  class="form-control"
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && form.get('referencia.mes').invalid , 
+                    'is-valid': (form.get('referencia.mes').valid && form.get('referencia.mes').touched) 
+                  }">
+                  <option [value]="mes.numero" *ngFor="let mes of meses">{{mes.nome}}</option>
+                </select>
+
+              </div>
+
+              <div class="col-md-3 col-6 form-group">
+
+                <label>* ano:</label>
+
+                <select 
+
+                  formControlName="ano"
+                  class="form-control"
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && form.get('referencia.ano').invalid , 
+                    'is-valid': (form.get('referencia.ano').valid && form.get('referencia.ano').touched) 
+                  }">
+                  >
+                  <option [value]="ano" *ngFor="let ano of anos">{{ano}}</option>
+                </select>
+
+              </div>
+
+            </div>
+
+            <hr/>
+            
+            <div class="row">
+              <div class="col-md-3 col-12"><label>Parâmetro:</label></div>
+              <div class="col-md-3 col-4"><label>Exigido:</label> </div>
+              <div class="col-md-3 col-4"><label>Analisado:</label></div>
+              <div class="col-md-3 col-4"><label>Conforme:</label></div>
+            </div>
+
+            <div formArrayName="coletas" class="row" *ngFor="let coleta of form.get('coletas')['controls']; let i = index;">
+              <ng-container [formGroupName]="i">
+                
+                <div class="col-md-3 col-12 form-group">
+                  {{coletasArray[i].parametro.nome}}
+                </div>
+
+                <div  class="col-md-3 col-4 form-group">
+                  <input 
+                    formControlName="exigido" 
+                    placeholder="Exigido"
+                    class="form-control" 
+                    [ngClass]="
+                    {
+                      'is-invalid': submited && getValidity(i).invalid , 
+                      'is-valid': (getValidity(i).valid && getValidity(i).touched) 
+                    }"
+                   >
+                </div>
+                
+                <div  class="col-md-3 col-4 form-group">
+                  <input 
+                    formControlName="analisado" 
+                    placeholder="Analisado"
+                    class="form-control" 
+                    [ngClass]="
+                    {
+                      'is-invalid': submited && getValidity(i).invalid , 
+                      'is-valid': (getValidity(i).valid && getValidity(i).touched) 
+                    }"
+                  >
+                </div>
+                
+                <div  class="col-md-3 col-4 form-group">
+                  <input 
+                    formControlName="conforme" 
+                    placeholder="Conforme"
+                    class="form-control" 
+                    [ngClass]="
+                    {
+                      'is-invalid': submited && getValidity(i).invalid , 
+                      'is-valid': (getValidity(i).valid && getValidity(i).touched) 
+                    }"
+                  >
+                </div>
+
+              </ng-container>
+            </div>
+            
+            <hr/>
+
+          </div>
+            
+          <div class="footer">
+            
+            <div class="col mb-3">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+                <button class="btn btn-outline-success" type="submit" >Salvar</button>
+              </div>
+            </div>
+            
+          </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+

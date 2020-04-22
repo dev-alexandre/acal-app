@@ -33,25 +33,31 @@
       
       </div>
         
+      <!-- 
       <hr>
            
       <ul class="row list-unstyled">
       
+        <li class="col-12">
+          Hoje
+        </li>
+
         <li class="col-4">
-          <small>Sales</small>
+          <small>Recebido</small>
           <h6>456</h6>
         </li>
       
         <li class="col-4">
-          <small>Order</small>
+          <small>Emitido</small>
           <h6>1350</h6>
         </li>
         
         <li class="col-4">
-          <small>Revenue</small>
+          <small>Mês</small>
           <h6>$2.13B</h6>
           </li>
       </ul>
+      '-->
   </div>
 
   <!-- Nav tabs -->
@@ -64,14 +70,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')">
-        <i class="icon-book-open"></i>
+      <a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')">
+        <i class="icon-settings"></i>
       </a>
     </li>
 
+    <!-- 
     <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')">
-        <i class="icon-settings"></i>
+      <a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')">
+        <i class="icon-book-open"></i>
       </a>
     </li>
     
@@ -80,6 +87,8 @@
         <i class="icon-question"></i>
       </a>
     </li>
+    -->
+
   </ul>
 
   <!-- Tab panes -->
