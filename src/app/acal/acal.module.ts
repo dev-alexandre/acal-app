@@ -6,11 +6,13 @@ import { AcalRouting } from './acal.routing';
 import { LayoutModule } from '@app/layout/layout.module';
 import { AnaliseService, ParametroService } from '@app/pacotes/servico/_index';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
   imports:
   [
+    NgxMaskModule.forChild(),
     CommonModule,
     HttpClientModule,
     AcalRouting,

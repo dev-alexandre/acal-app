@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { MesService } from './../../pacotes/servico/mes.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor'
 @NgModule({
   imports:
   [
+    NgxMaskModule.forChild(),
     CommonModule,
     NgbModule,
     ReactiveFormsModule,

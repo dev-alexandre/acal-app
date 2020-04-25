@@ -13,6 +13,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './_autenticacao/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_autenticacao/_helpers/error.interceptor';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
 
@@ -23,6 +24,7 @@ import { ErrorInterceptor } from './_autenticacao/_helpers/error.interceptor';
 
   imports:
   [
+    NgxMaskModule.forRoot(),
     BrowserModule,
     AppRouting,
     NgbModule,

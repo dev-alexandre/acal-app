@@ -91,6 +91,7 @@
           <input 
             class="form-control form-control-sm"
             [(ngModel)]="filtro.referencia.referencia.valor" 
+            mask="00/0000"
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -107,6 +108,7 @@
           <input 
             class="form-control form-control-sm"
             [(ngModel)]="filtro.coleta.exigido.valor" 
+            mask="0*"
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -114,7 +116,8 @@
         <th>
           <input 
             class="form-control form-control-sm"
-            [(ngModel)]="filtro.coleta.analisado.valor" 
+            [(ngModel)]="filtro.coleta.analisado.valor"
+            mask="0*" 
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -122,7 +125,8 @@
         <th>
           <input 
             class="form-control form-control-sm"
-            [(ngModel)]="filtro.coleta.conforme.valor" 
+            [(ngModel)]="filtro.coleta.conforme.valor"
+            mask="0*" 
             (keyup.enter)="onEnter()" 
           />
         </th>
