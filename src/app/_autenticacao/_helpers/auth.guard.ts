@@ -21,14 +21,10 @@ export class AuthGuard implements CanActivate {
 
       if (currentUser) {
 
-        console.log(route.data.roles);
-        console.log(currentUser.funcoes);
-
         if (route.data.roles && this.isPossuiAutorizacao(route.data.roles, currentUser.funcoes)) {
           this.router.navigate(['/']);
           return false;
         }
-
 
         return true;
       }

@@ -71,12 +71,16 @@ export class SidebarComponent implements OnInit , OnDestroy {
   private adicionar(): void {
     this.adicionarDashboard();
     this.adicionarCadastro();
+    this.adicionarGrupoConsumo();
+    this.adicionarAnalise();
+    this.adicionarMatricula();
+    this.adicionarFaturamento();
   }
 
   private adicionarDashboard(): void {
     const dashboard = new Menu();
     dashboard.nome = 'dashboard';
-    dashboard.icone = 'icon-home';
+    dashboard.icone = 'fa fa-desktop';
     dashboard.titulo = 'Dashboard';
 
     dashboard.itens = [];
@@ -95,13 +99,51 @@ export class SidebarComponent implements OnInit , OnDestroy {
     this.menu.push(dashboard);
   }
 
-  private adicionarCadastro(): void {
-    const cadastro = new Menu();
-    cadastro.nome = 'cadastro';
-    cadastro.icone = 'icon-home';
-    cadastro.titulo = 'Cadastro';
 
-    cadastro.itens = [];
+  private adicionarGrupoConsumo(): void {
+    const categoriaMenu = new Menu();
+    categoriaMenu.nome = 'categoria';
+    categoriaMenu.icone = 'fa fa-group';
+    categoriaMenu.titulo = 'Categoria';
+
+    categoriaMenu.itens = [];
+
+    const categoria = new Item();
+    categoria.link = '/admin/dashboard/index';
+    categoria.titulo = 'Categoria';
+
+    const grupoConsumo = new Item();
+    grupoConsumo.link = '/admin/dashboard/index';
+    grupoConsumo.titulo = 'Grupo de Consumo';
+
+    categoriaMenu.itens.push(grupoConsumo);
+    categoriaMenu.itens.push(categoria);
+    this.menu.push(categoriaMenu);
+  }
+
+  private adicionarCadastro(): void {
+    const cadastroMenu = new Menu();
+    cadastroMenu.nome = 'cadastro';
+    cadastroMenu.icone = 'icon-user';
+    cadastroMenu.titulo = 'Cadastro';
+
+    cadastroMenu.itens = [];
+
+    const cliente = new Item();
+    cliente.link = '/admin/dashboard/index';
+    cliente.titulo = 'Cliente';
+
+    cadastroMenu.itens.push(cliente);
+    this.menu.push(cadastroMenu);
+  }
+
+  private adicionarAnalise(): void {
+    const analiseMenu = new Menu();
+    analiseMenu.nome = 'Análise';
+    analiseMenu.icone = 'fa fa-tint';
+    analiseMenu.titulo = 'Qualidade da Água';
+
+    analiseMenu.itens = [];
 
     const parametro = new Item();
     parametro.link = '/acal/parametro/listar';
@@ -111,13 +153,60 @@ export class SidebarComponent implements OnInit , OnDestroy {
     analise.link = '/acal/analise/listar';
     analise.titulo = 'Análise';
 
-    cadastro.itens.push(parametro);
-    cadastro.itens.push(analise);
+    analiseMenu.itens.push(parametro);
+    analiseMenu.itens.push(analise);
 
-    this.menu.push(cadastro);
+    this.menu.push(analiseMenu);
   }
 
+  public adicionarMatricula() {
+    const matriculaMenu = new Menu();
+    matriculaMenu.nome = 'Matricula';
+    matriculaMenu.icone = 'icon-home';
+    matriculaMenu.titulo = 'Matricula';
 
+    matriculaMenu.itens = [];
+
+    const matricula = new Item();
+    matricula.link = '/acal/parametro/listar';
+    matricula.titulo = 'Matricula';
+
+    const logradouro = new Item();
+    logradouro.link = '/acal/analise/listar';
+    logradouro.titulo = 'Logradouro';
+
+    const tipoLogradouro = new Item();
+    tipoLogradouro.link = '/acal/cliente/listar';
+    tipoLogradouro.titulo = 'Tipo Logradouro';
+
+    matriculaMenu.itens.push(matricula);
+    matriculaMenu.itens.push(logradouro);
+    matriculaMenu.itens.push(tipoLogradouro);
+
+    this.menu.push(matriculaMenu);
+  }
+
+  public adicionarFaturamento() {
+    const faturamentoMenu = new Menu();
+    faturamentoMenu.nome = 'Faturamento';
+    faturamentoMenu.icone = 'fa fa-money';
+    faturamentoMenu.titulo = 'Faturamento';
+
+    faturamentoMenu.itens = [];
+
+    const contrato = new Item();
+    contrato.link = '/acal/parametro/listar';
+    contrato.titulo = 'Contrato';
+
+    const boleto = new Item();
+    boleto.link = '/acal/analise/listar';
+    boleto.titulo = 'Boleto';
+
+    faturamentoMenu.itens.push(boleto);
+    faturamentoMenu.itens.push(contrato);
+
+    this.menu.push(faturamentoMenu);
+  }
 
 
   ngOnDestroy() {
@@ -146,150 +235,3 @@ export class SidebarComponent implements OnInit , OnDestroy {
   }
 
 }
-
-
-/*
-<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'app'}">
-            <a class="has-arrow" (click)="activeInactiveMenu('app')"><i class="icon-grid"></i> <span>App</span></a>
-            <ul *ngIf="currentActiveMenu == 'app'">
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-inbox']">Inbox</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-chat']">Chat</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-calendar']">Calendar</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-contact-grid']">Contact
-                        Card <span class="badge badge-warning float-right">New</span></a></li>
-            </ul>
-          </li>
-
-          <li [ngClass]="{'active':currentActiveMenu == 'file-manager'}">
-              <a class="has-arrow" (click)="activeInactiveMenu('file-manager')"><i class="icon-folder"></i>
-                  <span>File Manager</span></a>
-              <ul *ngIf="currentActiveMenu == 'file-manager'">
-                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">Documents</a></li>
-                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-media']">Media</a></li>
-                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-images']">Images</a></li>
-              </ul>
-          </li>
-          
-                        <li [ngClass]="{'active':currentActiveMenu == 'blogs'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('blogs')"><i class="icon-globe"></i>
-                                <span>Blog</span></a>
-                            <ul *ngIf="currentActiveMenu == 'blogs'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-post']">New Post</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-list']">Blog List</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-details']">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'ui-elements'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('ui-elements')"><i class="icon-diamond"></i>
-                                <span>UI Elements</span></a>
-                            <ul *ngIf="currentActiveMenu == 'ui-elements'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/typography']">Typography</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-tabs']">Tabs</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-buttons']">Buttons</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-bootstrap']">Bootstrap
-                                        UI</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-icons']">Icons</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-notifications']">Notifications</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-colors']">Colors</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-list-group']">List
-                                        Group</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-media-object']">Media
-                                        Object</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-modal']">Modals</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/ui-elements/ui-progressbars']">Progress
-                                        Bars</a></li>
-                            </ul>
-                        </li>
-
-                        <li [ngClass]="{'active':currentActiveMenu == 'widgets'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('widgets')"><i class="icon-puzzle"></i>
-                                <span>Widgets</span></a>
-                            <ul *ngIf="currentActiveMenu == 'widgets'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/widgets/widgets-data']">Data</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/widgets/widgets-weather']">Weather</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/widgets/widgets-blog']">Blog</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/widgets/widgets-ecommerce']">eCommerce</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li [ngClass]="{'active':currentActiveMenu == 'authentication'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('authentication')"><i class="icon-lock"></i>
-                                <span>Authentication</span></a>
-                            <ul *ngIf="currentActiveMenu == 'authentication'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-login']">Login</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-register']">Register</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-lockscreen']">Lockscreen</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-forgot-password']">Forgot Password</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-404']">Page 404</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-403']">Page 403</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-500']">Page 500</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-503']">Page 503</a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'pages'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('pages')"><i class="icon-docs"></i> <span>Pages</span></a>
-                            <ul *ngIf="currentActiveMenu == 'pages'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-blank']">Blank
-                                        Page</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-profile']">Profile
-                                        <span class="badge badge-default float-right">v1</span></a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-profile2']">Profile
-                                        <span class="badge badge-warning float-right">v2</span></a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-gallery']">Image
-                                        Gallery</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-timeline']">Timeline</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-pricing']">Pricing</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-invoices']">Invoices
-                                        <span class="badge badge-default float-right">v1</span></a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-invoices2']">Invoices
-                                        <span class="badge badge-warning float-right">v2</span></a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-search-results']">Search
-                                        Results</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-helper-class']">Helper
-                                        Classes</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-teams-board']">Teams
-                                        Board</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-projects-list']">Projects
-                                        List</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/authentication/page-maintanance']">Maintanance</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-testimonials']">Testimonials</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pages/page-faq']">FAQ</a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'forms'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('forms')"><i class="icon-pencil"></i>
-                                <span>Forms</span></a>
-                            <ul *ngIf="currentActiveMenu == 'forms'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/forms/forms-validation']">Form Validation</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/forms/forms-basic']">Basic Elements</a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'tables'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('tables')"><i class="icon-tag"></i> <span>Tables</span></a>
-                            <ul *ngIf="currentActiveMenu == 'tables'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/tables/table-normal']">Normal
-                                        Tables</a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'charts'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('charts')"><i class="icon-bar-chart"></i>
-                                <span>Charts</span></a>
-                            <ul *ngIf="currentActiveMenu == 'charts'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/charts/chart-echarts']">E-Charts</a></li>
-                            </ul>
-                        </li>
-                        <li [ngClass]="{'active':currentActiveMenu == 'maps'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('maps')"><i class="icon-bar-chart"></i>
-                                <span>Maps</span></a>
-                            <ul *ngIf="currentActiveMenu == 'maps'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                                        [routerLink]="['/admin/maps/leaflet']">Leaflet</a></li>
-                            </ul>
-                        </li>
-
-*/

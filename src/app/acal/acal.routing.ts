@@ -21,6 +21,13 @@ const routes: Routes = [
         },
 
         {
+          path: 'cliente' , canActivate: [AuthGuard],
+          loadChildren:
+            () => import('app/acal/cliente/cliente.module')
+            .then(m => m.ClienteModule)
+        },
+
+        {
           path: 'analise' , canActivate: [AuthGuard],
           loadChildren:
             () => import('app/acal/analise/analise.module')

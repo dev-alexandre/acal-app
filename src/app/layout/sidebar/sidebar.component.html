@@ -6,7 +6,6 @@
         <img src="assets/images/user.png" 
         class="rounded-circle user-photo" 
         alt="User Profile Picture"
-        >
       -->
         
       <div class="dropdown" ngbDropdown>
@@ -107,7 +106,7 @@
             [ngClass]="{'active':currentActiveMenu == m.nome}">
             
             <a class="has-arrow" (click)="activeInactiveMenu(m.nome)">
-              <i class="icon-home"></i>
+              <i class="{{m.icone}}"></i>
               <span>{{m.titulo}}</span>
             </a>
 
@@ -203,7 +202,7 @@
           <li class="menu-button m-t-30">
             <a href="javascript:void(0);" class="btn btn-primary">
               <i class="icon-question"></i> 
-              Need Help?
+                Precisa de ajuda?
             </a>
           </li>
         </ul>

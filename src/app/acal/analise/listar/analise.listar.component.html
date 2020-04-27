@@ -99,6 +99,7 @@
         <th>
           <input 
             class="form-control form-control-sm"
+            [disabled]=true
             [(ngModel)]="filtro.coleta.parametro.nome.valor" 
             (keyup.enter)="onEnter()" 
           />
@@ -109,6 +110,7 @@
             class="form-control form-control-sm"
             [(ngModel)]="filtro.coleta.exigido.valor" 
             mask="0*"
+            [disabled]=true
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -118,6 +120,7 @@
             class="form-control form-control-sm"
             [(ngModel)]="filtro.coleta.analisado.valor"
             mask="0*" 
+            [disabled]=true
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -127,6 +130,7 @@
             class="form-control form-control-sm"
             [(ngModel)]="filtro.coleta.conforme.valor"
             mask="0*" 
+            [disabled]=true
             (keyup.enter)="onEnter()" 
           />
         </th>
@@ -139,7 +143,7 @@
         <tr *ngFor="let coleta of analise.coletas; let indexOf = index">
 
           <td [attr.rowspan]="analise.coletas.length" *ngIf="indexOf === 0">
-            <button type="button" (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+            <button type="button" [disabled]=true (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
               <i class="fa fa-pencil"></i>
             </button>
           </td>  

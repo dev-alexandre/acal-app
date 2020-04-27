@@ -1,0 +1,139 @@
+ <!-- 
+ <ul class="nav nav-tabs">
+    
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">
+      Menu
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')">
+      <i class="icon-settings"></i>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')">
+      <i class="icon-question"></i>
+    </a>
+  </li>
+
+</ul>
+
+<div class="tab-content p-l-0 p-r-0">
+  <div class="tab-pane" id="menu" [ngClass]="{'active':navTab == 'menu' || !navTab}">
+
+    <nav id="left-sidebar-nav" class="sidebar-nav">
+      <ul id="main-menu" class="metismenu">
+        
+        <li *ngFor="let m of menu" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{exact: true}" 
+          [ngClass]="{'active':currentActiveMenu == m.nome}">
+          
+          <a class="has-arrow" (click)="activeInactiveMenu(m.nome)">
+            <i class="{{m.icone}}"></i>
+            <span>{{m.titulo}}</span>
+          </a>
+
+          <ng-container *ngFor="let item of m.itens">
+            
+            <ul  *ngIf="currentActiveMenu == m.nome">
+              <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="[item.link]">{{item.titulo}}</a>
+              </li>
+            </ul>
+
+          </ng-container>
+
+        </li>
+      
+      </ul>
+    </nav>
+          
+  </div>
+          
+  <div class="tab-pane p-l-15 p-r-15" id="setting" [ngClass]="{'active':navTab == 'setting'}">
+    <h6>Escolha tema</h6>
+    <ul class="choose-skin list-unstyled">
+      
+      <li data-theme="white" [ngClass]="{'active':darkClass == ''}" (click)="changeDarkMode('')">
+        <div class="white"></div>
+        <span>Claro</span>
+      </li>
+
+      <li data-theme="black" [ngClass]="{'active':darkClass == 'full-dark'}" (click)="changeDarkMode('full-dark')">
+        <div class="black"></div>
+        <span>Escuro</span>
+      </li>
+
+    </ul>
+            
+    <hr>
+            
+    <h6>Escolher ambiente</h6>
+    
+    <ul class="choose-skin list-unstyled">
+    
+      <li data-theme="purple" [ngClass]="{'active':themeClass == 'theme-purple'}" (click)="changeTheme('theme-purple')">
+        <div class="purple"></div>
+        <span>Roxo</span>
+      </li>
+
+      <li data-theme="blue" [ngClass]="{'active':themeClass == 'theme-blue'}" (click)="changeTheme('theme-blue')">
+          <div class="blue"></div>
+          <span>Azul</span>
+      </li>
+
+      <li data-theme="cyan" [ngClass]="{'active':themeClass == 'theme-cyan'}" (click)="changeTheme('theme-cyan')">
+          <div class="cyan"></div>
+          <span>Ciano</span>
+      </li>
+
+      <li data-theme="green" [ngClass]="{'active':themeClass == 'theme-green'}" (click)="changeTheme('theme-green')">
+          <div class="green"></div>
+          <span>Verde</span>
+      </li>
+
+      <li data-theme="orange" [ngClass]="{'active':themeClass == 'theme-orange'}" (click)="changeTheme('theme-orange')">
+          <div class="orange"></div>
+          <span>Laranja</span>
+      </li>
+
+      <li data-theme="blush" [ngClass]="{'active':themeClass == 'theme-blush'}" (click)="changeTheme('theme-blush')">
+          <div class="blush"></div>
+          <span>Coral</span>
+      </li>
+
+    </ul>
+
+    <hr>
+    
+    <h6>Configurações gerais</h6>
+    
+    <ul class="setting-list list-unstyled">
+      <li>
+        <label class="fancy-checkbox">
+          <input type="checkbox" name="checkbox">
+          <span>Opções de exportação avançada</span>
+        </label>
+      </li>
+    </ul>
+    
+  </div>
+
+    <div class="tab-pane p-l-15 p-r-15" id="question" [ngClass]="{'active':navTab == 'question'}">
+      <ul class="list-unstyled question">
+        <li class="menu-heading">Manual</li>
+        <li class="menu-button m-t-30">
+          <a href="javascript:void(0);" class="btn btn-primary">
+            <i class="icon-question"></i> 
+              Precisa de ajuda?
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+-->

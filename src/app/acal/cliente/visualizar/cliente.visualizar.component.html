@@ -1,0 +1,41 @@
+<div class="row clearfix">
+  <div class="col-12">
+
+    <div class="card">
+      
+      <div class="header">
+        <h2>Visualizar Cliente</h2>
+      </div>
+
+      <div class="body">
+
+        <div class="form-group">
+          <label>Nome:</label>
+          <input  
+            [disabled]="true"
+            [(ngModel)]="cliente.nome" 
+            class="form-control " 
+            name="text" 
+            >
+        </div>
+
+      </div>
+
+
+        <div class="footer">
+          <div class="d-flex justify-content-between">
+            <div class="p-2">
+            </div>
+            
+            <div class="p-2">
+              <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+            </div>
+            
+          </div>
+          
+        </div>
+     
+    </div>
+
+  </div>
+</div>

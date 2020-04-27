@@ -1,0 +1,125 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
+  <div class="row clearfix">
+    <div class="col-12">
+      
+      <div class="card">
+        
+        <div class="header">
+          <h2>Incluir Cliente</h2>
+        </div>
+        
+        <div class="body">
+          <div class="form-group">
+          
+            <div class="row">
+              <div class="col-md-8 col-12 form-group">
+
+                <label>* Nome:</label>
+                  
+                <input 
+                  type="text" 
+                  class="form-control"
+                  formControlName="nome"
+                 
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && nome.invalid , 
+                    'is-valid': (nome.valid && nome.touched) 
+                  }">
+      
+                <span class="invalid-feedback" *ngIf="nome.hasError('required')">
+                  Campo é Obrigatório
+                </span>
+
+                <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
+                  Esse campo exige pelo menos 3 caracteres
+                </span>
+                  
+                <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
+                  Esse campo exige no maximo 50 caracteres
+                </span>
+              </div>
+
+              <div  class="col-md-4 col-12 form-group">
+                <label>* Documento:</label>
+                  
+                <input 
+                  type="text" 
+                  mask="0*"
+                  class="form-control"
+                  formControlName="documento"
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && documento.invalid , 
+                    'is-valid': (documento.valid && documento.touched) 
+                  }">
+      
+                <span class="invalid-feedback" *ngIf="documento.hasError('required')">
+                  Campo é Obrigatório
+                </span>
+               
+              </div>
+            
+            </div>
+
+            <div class="row">
+              <div  class="col-md-6 col-12 form-group">
+                <label>Data de nascimento:</label>
+                  
+                <input 
+                  type="text" 
+                  mask="00/00/0000"
+                  class="form-control"
+                  formControlName="dataNascimento"
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && dataNascimento.invalid , 
+                    'is-valid': (dataNascimento.valid && dataNascimento.touched) 
+                  }">
+               
+              </div>
+
+              <div  class="col-md-6 col-12 form-group">
+               
+                <label>Numero de telefone:</label>
+                  
+                <input 
+                  type="text" 
+                  mask="(00) 0 0000-0000"
+                  class="form-control"
+                  formControlName="telefone"
+                  [ngClass]="
+                  {
+                    'is-invalid': submited && telefone.invalid , 
+                    'is-valid': (telefone.valid && telefone.touched) 
+                  }">
+               
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+        
+        
+        <div class="footer mb-4">
+          
+            <div class="col">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+                <button class="btn btn-outline-success" type="submit" >Salvar</button>
+              </div>
+            </div>
+
+          
+        </div>
+        
+      </div>
+      
+    </div>
+
+    
+  </div>
+  
+</form>
