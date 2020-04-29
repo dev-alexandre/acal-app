@@ -1,0 +1,82 @@
+
+<app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
+
+  <table class="table table-hover table-bordered table-sm">
+    <thead class="thead-light">
+      <tr>
+
+        <th colspan="2" style="width: 8%;">
+          
+          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-sm btn-block">
+            <i class="fa fa-plus"></i>
+          </button>
+
+        </th>
+
+        <th (click)="ordernar('nome')" style="width: 52%;">
+          <div class="d-flex justify-content-between  align-items-center">
+            
+            <div>
+              Nome
+            </div>
+            
+            <div *ngIf="filtro.nome">
+              <i class="icon-arrow-up" *ngIf="filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
+            </div>
+          
+          </div>
+
+
+        </th>
+
+      </tr>
+    </thead>
+   
+    <thead>
+      
+      <tr>
+        
+        <th colspan="2">
+          <button type="button" (click)="buscar()" class="btn btn-success btn-sm btn-block">
+            Buscar
+          </button>
+        </th>
+
+        <th>
+          <input 
+            class="form-control form-control-sm"
+            [(ngModel)]="filtro.nome.valor" 
+            (keyup.enter)="buscar()" 
+           />
+        </th>
+
+      </tr>
+
+
+    </thead>
+    
+    <tbody>
+      
+      <tr *ngFor="let data of table.content" (click)="visualizar(data)">
+
+        <td>
+          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+            <i class="fa fa-pencil"></i>
+          </button>
+        </td>
+
+        <td>
+          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+            <i class="fa fa-times"></i>
+          </button>
+        </td>
+
+        <td> {{data.nome}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</app-table>
+

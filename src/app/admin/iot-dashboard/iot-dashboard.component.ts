@@ -39,7 +39,8 @@ export class IotDashboardComponent implements OnDestroy {
     public darkClass: string = "";
     private ngUnsubscribe = new Subject();
 
-    constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private themeService: ThemeService) {
+    constructor(
+        private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private themeService: ThemeService) {
         this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
         this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
 

@@ -109,15 +109,15 @@ export class SidebarComponent implements OnInit , OnDestroy {
     categoriaMenu.itens = [];
 
     const categoria = new Item();
-    categoria.link = '/admin/dashboard/index';
+    categoria.link = '/acal/categoria/listar';
     categoria.titulo = 'Categoria';
 
     const grupoConsumo = new Item();
-    grupoConsumo.link = '/admin/dashboard/index';
+    grupoConsumo.link = '/acal/grupo-consumo/listar';
     grupoConsumo.titulo = 'Grupo de Consumo';
 
-    categoriaMenu.itens.push(grupoConsumo);
     categoriaMenu.itens.push(categoria);
+    categoriaMenu.itens.push(grupoConsumo);
     this.menu.push(categoriaMenu);
   }
 
@@ -130,7 +130,7 @@ export class SidebarComponent implements OnInit , OnDestroy {
     cadastroMenu.itens = [];
 
     const cliente = new Item();
-    cliente.link = '/admin/dashboard/index';
+    cliente.link = '/acal/cliente/listar';
     cliente.titulo = 'Cliente';
 
     cadastroMenu.itens.push(cliente);
@@ -168,15 +168,15 @@ export class SidebarComponent implements OnInit , OnDestroy {
     matriculaMenu.itens = [];
 
     const matricula = new Item();
-    matricula.link = '/acal/parametro/listar';
+    matricula.link = '/acal/matricula/listar';
     matricula.titulo = 'Matricula';
 
     const logradouro = new Item();
-    logradouro.link = '/acal/analise/listar';
+    logradouro.link = '/acal/logradouro/listar';
     logradouro.titulo = 'Logradouro';
 
     const tipoLogradouro = new Item();
-    tipoLogradouro.link = '/acal/cliente/listar';
+    tipoLogradouro.link = '/acal/tipo-logradouro/listar';
     tipoLogradouro.titulo = 'Tipo Logradouro';
 
     matriculaMenu.itens.push(matricula);
@@ -195,11 +195,11 @@ export class SidebarComponent implements OnInit , OnDestroy {
     faturamentoMenu.itens = [];
 
     const contrato = new Item();
-    contrato.link = '/acal/parametro/listar';
+    contrato.link = '/acal/contrato/listar';
     contrato.titulo = 'Contrato';
 
     const boleto = new Item();
-    boleto.link = '/acal/analise/listar';
+    boleto.link = '/acal/boleto/listar';
     boleto.titulo = 'Boleto';
 
     faturamentoMenu.itens.push(boleto);

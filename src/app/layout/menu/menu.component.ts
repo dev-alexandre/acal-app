@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Menu } from '@app/_layout/model/menu.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '@app/_layout/model/item.model';
+import { Menu } from '@app/_layout/model/menu.model';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,12 +10,36 @@ import { Item } from '@app/_layout/model/item.model';
 
 export class MenuComponent implements OnInit {
 
+  @Input()
+  public sidebarVisible: boolean;
+
+  @Input()
+  public navTab: string;
+
+  @Input()
+  public currentActiveMenu: any;
+
+  @Input()
+  public currentActiveSubMenu: any;
+
+  @Output()
+  public changeNavTabEvent: EventEmitter<any>;
+
+  @Output()
+  public activeInactiveMenuEvent: EventEmitter<any>;
+
+
+
   public menu: Menu[];
+
+  constructor(private themeService: ThemeService) {
+  }
 
   ngOnInit(): void {
     this.menu = [];
     this.adicionar();
   }
+
 
   private adicionar(): void {
     this.adicionarDashboard();
@@ -119,6 +144,22 @@ export class MenuComponent implements OnInit {
     faturamentoMenu.itens.push(contrato);
 
     this.menu.push(faturamentoMenu);
+  }
+
+ changeNavTab(tab: string) {
+    this.navTab = tab;
+  }
+
+  activeInactiveMenu(menuItem: string) {
+    this.activeInactiveMenuEvent.emit({ 'item': menuItem });
+  }
+
+  changeTheme(theme: string) {
+    this.themeService.themeChange(theme);
+  }
+
+  changeDarkMode(darkClass: string) {
+    this.themeService.changeDarkMode(darkClass);
   }
 
 

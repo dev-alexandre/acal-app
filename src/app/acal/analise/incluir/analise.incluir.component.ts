@@ -1,10 +1,11 @@
+import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Analise, Coleta, Mes, Parametro } from '@app/pacotes/modelo/_index';
+import { AnaliseService } from '@app/pacotes/servico/_index';
 import { MesService } from './../../../pacotes/servico/mes.service';
 import { ParametroService } from './../../../pacotes/servico/parametro.service';
-import { Component, OnInit } from '@angular/core';
-import { Parametro, Analise, Referencia, Mes, Coleta } from '@app/pacotes/modelo/_index';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { AnaliseService } from '@app/pacotes/servico/_index';
 
 @Component({
     selector: 'app-analise-incluir',
@@ -30,7 +31,8 @@ export class AnaliseIncluirComponent implements OnInit {
     public service: AnaliseService,
     public parametroService: ParametroService,
     private fb: FormBuilder,
-    public mesService: MesService
+    public mesService: MesService,
+    public toast: ToastrService,
     ) {
 
   }
@@ -83,7 +85,7 @@ export class AnaliseIncluirComponent implements OnInit {
           this.voltar();
         },
         (error) => {
-          console.log(error);
+          this.toast.error(error);
         }
       );
   }
@@ -130,7 +132,7 @@ export class AnaliseIncluirComponent implements OnInit {
     return this.form.get('coletas') as FormArray;
   }
 
-  public getValidity(i: number){
+  public getValidity(i: number) {
     return (<FormArray>this.form.get('coletas')).controls[i];
   }
 

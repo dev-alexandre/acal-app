@@ -1,11 +1,11 @@
-import { ParametroFiltro } from './../../../pacotes/filtro/parametro.filtro';
-import { ParametroService } from './../../../pacotes/servico/parametro.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 import { Analise } from '@app/pacotes/modelo/analise.modelo';
 import { Parametro, Table } from '@app/pacotes/modelo/_index';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 import { AtualizacaoService } from '@app/pacotes/servico/_index';
+import { ParametroFiltro } from './../../../pacotes/filtro/parametro.filtro';
+import { ParametroService } from './../../../pacotes/servico/parametro.service';
 
 @Component({
     selector: 'app-parametro-listar',
@@ -65,17 +65,17 @@ export class ParametroListarComponent implements OnInit {
   }
 
   editar(parametro: Parametro): void {
-    localStorage.setItem('[parametro]' + '[editar]', JSON.stringify(parametro));
+    localStorage.setItem('[parametro][editar]', JSON.stringify(parametro));
     this.router.navigate([ './editar' ], { relativeTo: this.activeRouter.parent });
   }
 
   excluir(parametro: Parametro): void {
-    localStorage.setItem('[parametro]'  + '[excluir]', JSON.stringify(parametro));
+    localStorage.setItem('[parametro][excluir]', JSON.stringify(parametro));
     this.router.navigate([ './excluir' ], { relativeTo: this.activeRouter.parent });
   }
 
   visualizar(parametro: Parametro): void {
-    localStorage.setItem('[parametro]'  + '[visualizar]', JSON.stringify(parametro));
+    localStorage.setItem('[parametro][visualizar]', JSON.stringify(parametro));
     this.router.navigate([ './visualizar' ], { relativeTo: this.activeRouter.parent });
   }
 

@@ -7,9 +7,7 @@ import { BaseService } from '@app/pacotes/servico/base.service';
 import { Filtro } from '../filtro/filtro';
 import { Analise } from '../modelo/analise.modelo';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AnaliseService extends BaseService<Analise, Filtro>  {
 
   getServico(): string {

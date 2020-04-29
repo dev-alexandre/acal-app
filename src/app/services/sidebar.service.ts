@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class SidebarService {
 
-	public sidebarVisible: boolean = true;
+  public sidebarVisible: boolean;
 
-	constructor() { }
+  constructor() {
+    this.sidebarVisible = true;
+  }
 
-	toggle() {
-		this.sidebarVisible = !this.sidebarVisible;
-	}
+  toggle() {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
 
-	getStatus() {
-		return this.sidebarVisible;
-	}
+  getStatus() {
+    return this.sidebarVisible;
+  }
 }

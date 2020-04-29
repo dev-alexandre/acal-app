@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AutenticacaoModule } from '../_autenticacao/autenticacao.module';
 import { TableComponent } from '@app/biblioteca/table/table.component';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports:
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     PageLoaderComponent,
     TableComponent,
+    MenuComponent
   ],
 
   exports:
@@ -32,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     SidebarComponent,
     PageLoaderComponent,
-    TableComponent
+    TableComponent,
+    MenuComponent
   ]
 
 })

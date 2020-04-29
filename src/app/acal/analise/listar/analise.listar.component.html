@@ -1,6 +1,6 @@
 <app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
 
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-striped table-bordered table-sm">
     <thead class="thead-light">
       <tr>
 
@@ -30,7 +30,7 @@
         </th>
 
         <th class="align-items-center" (click)="ordernar('parametro')" >
-          <div class="d-flex justify-content-between  align-items-center">
+          <div class="d-flex justify-content-between align-items-center">
             Parâmetro
             
             <div *ngIf="filtro.coleta.parametro.nome.orderAsc !== null">
