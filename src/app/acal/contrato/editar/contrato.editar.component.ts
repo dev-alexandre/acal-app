@@ -59,8 +59,8 @@ export class ContratoEditarComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      nome: new FormControl(
-        this.data.nome, [
+      numero: new FormControl(
+        this.data.numero, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)
@@ -69,8 +69,8 @@ export class ContratoEditarComponent implements OnInit {
 
   }
 
-  get nome() {
-    return this.form.get('nome');
+  get numero() {
+    return this.form.get('numero');
   }
 
 }

@@ -40,7 +40,7 @@ export class BoletoIncluirComponent implements OnInit {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
           (error) => {
-            
+
           }
     );
   }

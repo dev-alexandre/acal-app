@@ -61,7 +61,7 @@ export class BoletoEditarComponent implements OnInit {
     this.form = new FormGroup({
 
       nome: new FormControl(
-        this.data.nome, [
+        this.data.numero, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)

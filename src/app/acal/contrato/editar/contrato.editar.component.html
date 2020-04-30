@@ -12,27 +12,27 @@
         <div class="body">
           <div class="form-group">
           
-            <label>* Nome:</label>
+            <label>* Número:</label>
                       
             <input 
               type="text" 
               class="form-control"
-              formControlName="nome"
+              formControlName="numero"
               [ngClass]="
               {
-                'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
+                'is-invalid': submited && numero.invalid , 
+                'is-valid': (numero.valid && numero.touched) 
               }">
   
-            <span class="invalid-feedback" *ngIf="nome.hasError('required')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('required')">
               Campo é Obrigatório
             </span>
 
-            <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('minlength')">
               Esse campo exige pelo menos 3 caracteres
             </span>
               
-            <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('maxlength')">
               Esse campo exige no maximo 50 caracteres
             </span>
           </div>

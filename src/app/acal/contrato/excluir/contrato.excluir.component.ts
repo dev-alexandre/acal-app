@@ -37,7 +37,7 @@ export class ContratoExcluirComponent implements OnInit {
     this.data = this.form.value;
 
     this.service
-      .deletarPorNome(this.data.nome)
+      .deletarPorNome(this.data.numero)
         .subscribe(
           (response) => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
@@ -54,8 +54,8 @@ export class ContratoExcluirComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      nome: new FormControl(
-        this.data.nome , [
+      numero: new FormControl(
+        this.data.numero , [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)
@@ -64,8 +64,8 @@ export class ContratoExcluirComponent implements OnInit {
 
   }
 
-  get nome() {
-    return this.form.get('nome');
+  get numero() {
+    return this.form.get('numero');
   }
 
 }
