@@ -1,5 +1,5 @@
-import { Filtro } from './filtro';
-import { ElementoFiltro } from './_index';
+import { ElementoFiltro } from '@app/pacotes/filtro/_index';
+import { Filtro } from '@app/pacotes/filtro/filtro';
 
 export class CategoriaFiltro extends Filtro {
 

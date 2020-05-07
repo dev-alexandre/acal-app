@@ -1,3 +1,4 @@
+import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoConsumoFiltro } from '@app/pacotes/filtro/grupo-consumo.filtro';
@@ -5,6 +6,7 @@ import { GrupoConsumo } from '@app/pacotes/modelo/grupo-consumo.modelo';
 import { Table } from '@app/pacotes/modelo/_index';
 import { GrupoConsumoService } from '@app/pacotes/servico/grupo-consumo.service';
 import { AtualizacaoService } from './../../../pacotes/servico/atualizacao.service';
+import { Categoria } from '@app/acal/categoria/categoria.modelo';
 
 @Component({
     selector: 'app-grupo-consumo-listar',
@@ -49,6 +51,14 @@ export class GrupoConsumoListarComponent implements OnInit {
     this.filtro = filtro;
     this.buscar();
   }
+
+  public setCategoria(categoria: Categoria): void {
+    this.filtro.categoria = new ElementoFiltro();
+    this.filtro.categoria.valor = categoria.nome;
+    this.buscar();
+  }
+
+
 
   public ordernar(filtro: string): void {
 

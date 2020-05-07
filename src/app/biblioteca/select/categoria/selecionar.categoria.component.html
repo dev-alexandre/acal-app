@@ -1,0 +1,13 @@
+<select 
+  [ngModel]="categoria"
+  (ngModelChange)="onModelChange($event)" 
+  class="form-control form-control-sm " 
+  >
+  <option 
+    *ngFor="let c of categorias" 
+    [ngValue]=c> 
+    {{c.nome}} 
+  </option>
+
+</select>
+    

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnaliseFiltro, ElementoFiltro } from '@app/pacotes/filtro/_index';
@@ -26,7 +27,44 @@ export class AnaliseListarComponent implements OnInit {
     public activeRouter: ActivatedRoute,
     public analiseService: AnaliseService,
     public atualizacaoService: AtualizacaoService,
+    public toast: ToastrService,
     ) {
+  }
+
+  validarReferencia(referencia: string): void {
+    const anoAtual = (new Date()).getFullYear();
+
+    if (referencia.length === 6) {
+      const mes = +referencia.substring( 0 , 2 );
+      const ano = +referencia.substring( 2 , 6 );
+
+      if (mes < 1 || mes > 12) {
+        this.filtro.referencia.mes = new ElementoFiltro();
+
+        this.filtro.referencia = new ReferenciaFiltro();
+        this.filtro.referencia.referencia = new ElementoFiltro();
+        this.toast.info(mes + ': não é um Mês valido');
+
+      } else if ( (anoAtual - 10) < ano ) {
+
+
+        this.filtro.referencia = new ReferenciaFiltro();
+        this.filtro.referencia.referencia = new ElementoFiltro();
+        this.toast.info('Escolha um ano entre: ' + (anoAtual - 10) + ' e ' + (anoAtual + 10));
+
+      } else if ( ano > (anoAtual + 10)) {
+
+        this.filtro.referencia = new ReferenciaFiltro();
+        this.filtro.referencia.referencia = new ElementoFiltro();
+
+        this.toast.info('Escolha um ano entre: ' + (anoAtual - 10) + ' e ' + (anoAtual + 10));
+
+      }
+
+
+
+
+    }
   }
 
   ngOnInit(): void {

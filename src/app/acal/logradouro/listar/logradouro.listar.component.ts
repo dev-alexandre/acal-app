@@ -58,6 +58,12 @@ export class LogradouroListarComponent implements OnInit {
       this.filtro.nome.orderAsc = null;
     }
 
+    if (filtro === 'tipoLogradouro') {
+      this.filtro.tipoLogradouro.orderAsc = (!this.filtro.tipoLogradouro.orderAsc);
+    } else {
+      this.filtro.tipoLogradouro.orderAsc = null;
+    }
+
     this.buscar();
   }
 

@@ -71,22 +71,20 @@
       
       <tr>
         <th colspan="2">
-          <button type="button" (click)="buscar()" class="btn btn-success btn-sm btn-block">
+          <button type="button" (click)="buscar()" class="btn btn-success btn-block">
             Buscar
           </button>
         </th>
 
-        <th >
-          <input 
-            class="form-control form-control-sm"
-            [(ngModel)]="filtro.categoria.valor" 
-            (keyup.enter)="buscar()" 
-           />
+        <th>
+          <app-selecionar-categoria 
+            (setCategoria)="setCategoria($event)">
+          </app-selecionar-categoria>
         </th>
         
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.nome.valor" 
             (keyup.enter)="buscar()" 
            />
@@ -94,7 +92,7 @@
 
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.valor.valor"
             mask="0*"
             prefix="R$ " 
@@ -112,13 +110,13 @@
       <tr *ngFor="let data of table.content" (click)="visualizar(data)">
 
         <td>
-          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-block">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
 
         <td>
-          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-block">
             <i class="fa fa-times"></i>
           </button>
         </td>

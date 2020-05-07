@@ -92,6 +92,7 @@
             class="form-control form-control-sm"
             [(ngModel)]="filtro.referencia.referencia.valor" 
             mask="00/0000"
+            (ngModelChange)=(validarReferencia($event))
             (keyup.enter)="onEnter()" 
           />
         </th>

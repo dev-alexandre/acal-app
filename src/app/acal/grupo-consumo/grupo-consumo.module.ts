@@ -1,3 +1,4 @@
+import { BibliotecaModule } from './../../biblioteca/biblioteca.module';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ import { NgxMaskModule } from 'ngx-mask';
     FormsModule,
     GrupoConsumoRouting,
     LayoutModule,
+    BibliotecaModule,
   ],
 
   declarations:

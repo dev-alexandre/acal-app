@@ -1,4 +1,4 @@
-import { Categoria } from './categoria.modelo';
+import { Categoria } from '@app/acal/categoria/categoria.modelo';
 
 export class GrupoConsumo {
 

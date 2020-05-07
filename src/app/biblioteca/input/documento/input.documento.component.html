@@ -1,0 +1,26 @@
+<div class="input-group">
+            
+  <div class="input-group-prepend">
+    <button  type="button" class="btn btn-outline-secondary" 
+      (click)= changeTipoDocumento()>
+      {{tipoDocumento}}
+    </button>
+  </div>
+
+  <input 
+  *ngIf="tipoDocumento === 'C.P.F.'"
+  [(ngModel)]="documento"
+    type="text" 
+    mask="000.000.000-00"
+    class="form-control"
+  >
+  
+  <input 
+    *ngIf="tipoDocumento === 'C.N.P.J.'"
+    [(ngModel)]="documento"
+    type="text" 
+    mask="00.000.000/0000-00"
+    class="form-control"
+  >
+
+</div>

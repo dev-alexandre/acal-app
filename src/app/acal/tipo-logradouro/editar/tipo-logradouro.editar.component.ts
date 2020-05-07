@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +19,9 @@ export class TipoLogradouroEditarComponent implements OnInit {
   constructor(
     public router: Router,
     public activeRouter: ActivatedRoute,
-    public service: TipoLogradouroService) {
+    public service: TipoLogradouroService,
+    public toast: ToastrService,
+    ) {
   }
 
   ngOnInit(): void {
@@ -46,9 +49,9 @@ export class TipoLogradouroEditarComponent implements OnInit {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
 
-        (response) => {
-
-        }
+          (response) => {
+            this.toast.info(response);
+          }
     );
   }
 
@@ -65,7 +68,12 @@ export class TipoLogradouroEditarComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)
-      ]), }
+      ]),
+
+      id: new FormControl(
+        this.data.id
+        ),
+      }
     );
 
   }

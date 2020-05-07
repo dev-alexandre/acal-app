@@ -15,7 +15,7 @@ ARG env=prod
 
 
 
-RUN npm run build
+RUN ng build --prod
 
 FROM nginx:1.13
 

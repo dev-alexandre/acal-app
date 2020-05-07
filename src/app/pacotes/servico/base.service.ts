@@ -32,8 +32,8 @@ export abstract class BaseService<T, F> {
       return this.getHttp().put<T>( this.getServico()  + `/atualizar`, t);
     }
 
-    deletar(id: number): Observable<any> {
-      return this.getHttp().delete<number>(this.getServico()  + `/deletar/` + id);
+    deletar(id: string): Observable<any> {
+      return this.getHttp().delete<string>(this.getServico()  + `/deletar/` + id);
     }
 
     deletarPorNome(nome: string) {

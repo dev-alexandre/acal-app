@@ -43,17 +43,10 @@
               <div  class="col-md-4 col-12 form-group">
                 <label>* Documento:</label>
                   
-                <input 
-                  type="text" 
-                  mask="0*"
-                  class="form-control"
-                  formControlName="documento"
-                  [ngClass]="
-                  {
-                    'is-invalid': submited && documento.invalid , 
-                    'is-valid': (documento.valid && documento.touched) 
-                  }">
-      
+                <app-input-documento>
+                  
+                </app-input-documento>
+
                 <span class="invalid-feedback" *ngIf="documento.hasError('required')">
                   Campo é Obrigatório
                 </span>

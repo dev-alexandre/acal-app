@@ -36,6 +36,41 @@
             </a>
           </li>
           
+          <li class="dropdown" ngbDropdown>
+            <a class="dropdown-toggle icon-menu" ngbDropdownToggle>
+              <i class="icon-bell"></i>
+              <span class="notification-dot"></span>
+            </a>
+
+            <ul class="dropdown-menu notifications" ngbDropdownMenu>
+      
+              <li class="header">
+                <strong>You have 4 new Notifications</strong>
+              </li>
+              
+              <li>
+
+                <a href="javascript:void(0);">
+                  <div class="media">
+                    <div class="media-left">
+                      <i class="icon-info text-warning"></i>
+                    </div>
+                    <div class="media-body">
+                      <p class="text">
+                        Campaign <strong>Holiday Sale</strong> 
+                        is nearly reach budget limit.
+                      </p>
+                      <span class="timestamp">10:00 AM Today</span>
+                    </div>
+                  </div>
+                </a>
+              
+              </li>
+            </ul>
+          </li>
+
+
+          
           <!--
           <li>
             <a [routerLink]="['/admin/file-manager/file-documents']" class="icon-menu d-none d-sm-block d-md-none d-lg-block">

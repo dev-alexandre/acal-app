@@ -4,5 +4,6 @@ export class Categoria {
 
   constructor() {
   }
-  
+
 }
+

@@ -17,6 +17,7 @@ import { ClienteVisualizarComponent } from './visualizar/cliente.visualizar.comp
 import { ClienteIncluirComponent } from './incluir/cliente.incluir.component';
 import { ClienteListarComponent } from './listar/cliente.listar.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { BibliotecaModule } from '@app/biblioteca/biblioteca.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NgxMaskModule } from 'ngx-mask';
     FormsModule,
     ClienteRouting,
     LayoutModule,
+    BibliotecaModule,
   ],
 
   declarations:

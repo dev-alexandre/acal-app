@@ -37,7 +37,7 @@ export class TipoLogradouroExcluirComponent implements OnInit {
     this.data = this.form.value;
 
     this.service
-      .deletarPorNome(this.data.nome)
+      .deletar(this.data.id)
         .subscribe(
           (response) => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
@@ -59,7 +59,13 @@ export class TipoLogradouroExcluirComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)
-      ]), }
+      ]),
+
+      id: new FormControl(
+        this.data.id , [
+      ]),
+
+      }
     );
 
   }

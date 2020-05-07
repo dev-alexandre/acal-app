@@ -4,9 +4,9 @@ import { ClienteFiltro } from '@app/pacotes/filtro/cliente.filtro';
 import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
 import { Table } from '@app/pacotes/modelo/_index';
-import { Categoria } from '@app/pacotes/modelo/categoria.modelo';
-import { CategoriaFiltro } from '@app/pacotes/filtro/categoria.filtro';
-import { CategoriaService } from '@app/pacotes/servico/categoria.service';
+import { CategoriaFiltro } from './categoria.filtro';
+import { CategoriaService } from './categoria.service';
+import { Categoria } from './categoria.modelo';
 
 @Component({
     selector: 'app-categoria',

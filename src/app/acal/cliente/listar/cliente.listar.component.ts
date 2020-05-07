@@ -30,7 +30,7 @@ export class ClienteListarComponent implements OnInit {
     this.filtro = new ClienteFiltro();
     this.filtro.nome = new ElementoFiltro();
     this.buscar();
-    this.tipoDocumento = 'CPF';
+    this.tipoDocumento = 'C.P.F.';
   }
 
   public buscar() {
@@ -69,6 +69,18 @@ export class ClienteListarComponent implements OnInit {
 
 
     this.buscar();
+  }
+
+
+  public changeTipoDocumento(): void {
+    if ( this.tipoDocumento === 'C.P.F.') {
+
+      this.tipoDocumento = 'C.N.P.J.';
+
+    } else {
+
+      this.tipoDocumento = 'C.P.F.';
+    }
   }
 
   incluir(): void {

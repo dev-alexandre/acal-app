@@ -1,3 +1,4 @@
+import { BibliotecaModule } from './../biblioteca/biblioteca.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -9,9 +10,9 @@ import { AcalRouting } from './acal.routing';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { CategoriaService } from '@app/pacotes/servico/categoria.service';
 import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
+import { CategoriaService } from './categoria/categoria.service';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor'
     CommonModule,
     NgbModule,
     FormsModule,
+    BibliotecaModule
   ],
 
   declarations:
