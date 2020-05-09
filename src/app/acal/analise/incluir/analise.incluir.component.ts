@@ -2,10 +2,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Analise, Coleta, Mes, Parametro } from '@app/pacotes/modelo/_index';
-import { AnaliseService } from '@app/pacotes/servico/_index';
-import { MesService } from './../../../pacotes/servico/mes.service';
-import { ParametroService } from './../../../pacotes/servico/parametro.service';
+import { Analise } from '../analise.modelo';
+import { Mes } from '@app/pacotes/modelo/_index';
+import { Parametro } from '@app/acal/parametro/parametro.modelo';
+import { Coleta } from '../coleta.modelo';
+import { AnaliseService } from '../analise.service';
+import { ParametroService } from '@app/acal/parametro/parametro.service';
+import { MesService } from '@app/pacotes/servico/mes.service';
 
 @Component({
     selector: 'app-analise-incluir',

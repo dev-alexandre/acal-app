@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteFiltro } from '@app/pacotes/filtro/cliente.filtro';
 import { ElementoFiltro } from '@app/pacotes/filtro/_index';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
 import { Table } from '@app/pacotes/modelo/_index';
 import { CategoriaFiltro } from './categoria.filtro';
 import { CategoriaService } from './categoria.service';
 import { Categoria } from './categoria.modelo';
+import { Cliente } from '../cliente/cliente.modelo';
 
 @Component({
     selector: 'app-categoria',

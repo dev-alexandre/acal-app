@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Parametro } from '@app/pacotes/modelo/_index';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ParametroService } from '@app/pacotes/servico/_index';
+import { Parametro } from '../parametro.modelo';
+import { ParametroService } from '../parametro.service';
 
 @Component({
     selector: 'app-parametro-excluir',

@@ -6,7 +6,7 @@
 
         <th colspan="2">
           
-          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-sm btn-block">
+          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-block">
             <i class="fa fa-plus"></i>
           </button>
 
@@ -82,14 +82,14 @@
       <tr>
 
         <th colspan="2" >
-          <button type="button" class="btn btn-success btn-sm btn-block">
+          <button type="button" class="btn btn-otuput-success btn-block" [disabled]=true>
             Buscar
           </button>
         </th>
 
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.referencia.referencia.valor" 
             mask="00/0000"
             (ngModelChange)=(validarReferencia($event))
@@ -99,7 +99,7 @@
 
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [disabled]=true
             [(ngModel)]="filtro.coleta.parametro.nome.valor" 
             (keyup.enter)="onEnter()" 
@@ -108,7 +108,7 @@
         
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.coleta.exigido.valor" 
             mask="0*"
             [disabled]=true
@@ -118,7 +118,7 @@
         
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.coleta.analisado.valor"
             mask="0*" 
             [disabled]=true
@@ -128,7 +128,7 @@
         
         <th>
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.coleta.conforme.valor"
             mask="0*" 
             [disabled]=true
@@ -144,13 +144,13 @@
         <tr *ngFor="let coleta of analise.coletas; let indexOf = index">
 
           <td [attr.rowspan]="analise.coletas.length" *ngIf="indexOf === 0">
-            <button type="button" [disabled]=true (click)="editar(analise)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+            <button type="button" [disabled]=true (click)="editar(analise)" class="btn btn-outline-primary btn-block">
               <i class="fa fa-pencil"></i>
             </button>
           </td>  
     
           <td [attr.rowspan]="analise.coletas.length"  *ngIf="indexOf === 0">
-            <button type="button" (click)="excluir(analise)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+            <button type="button" (click)="excluir(analise)" class="btn btn-outline-danger btn-block">
               <i class="fa fa-times"></i>
             </button>
           </td>

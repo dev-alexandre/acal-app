@@ -1,17 +1,16 @@
-import 'rxjs/add/operator/map';
-import { ParametroFiltro } from './../filtro/parametro.filtro';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from '@app/pacotes/servico/base.service';
 import { environment } from 'environments/environment';
-import { Parametro } from '../modelo/parametro.modelo';
+import { Cliente } from './cliente.modelo';
+import { ClienteFiltro } from '@app/pacotes/filtro/cliente.filtro';
 
 
 @Injectable()
-export class ParametroService extends BaseService<Parametro, ParametroFiltro>  {
+export class ClienteService extends BaseService<Cliente, ClienteFiltro>  {
 
   getServico(): string {
-      return `${environment.apiUrl}/parametro`;
+      return `${environment.apiUrl}/cliente`;
   }
 
   getHttp(): HttpClient {

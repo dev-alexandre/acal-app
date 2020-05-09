@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@app/layout/layout.module';
-import { AnaliseService, ParametroService } from '@app/pacotes/servico/_index';
 import { NgxMaskModule } from 'ngx-mask';
 import { AcalComponent } from './acal.component';
 import { AcalRouting } from './acal.routing';
@@ -13,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
 import { CategoriaService } from './categoria/categoria.service';
+import { AnaliseService } from './analise/analise.service';
+import { ParametroService } from './parametro/parametro.service';
 
 
 @NgModule({

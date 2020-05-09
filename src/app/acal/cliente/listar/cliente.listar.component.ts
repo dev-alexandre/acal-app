@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteFiltro } from '@app/pacotes/filtro/cliente.filtro';
 import { ElementoFiltro } from '@app/pacotes/filtro/_index';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
 import { Table } from '@app/pacotes/modelo/_index';
-import { ClienteService } from '@app/pacotes/servico/cliente.service';
 import { AtualizacaoService } from '@app/pacotes/servico/_index';
+import { Cliente } from '../cliente.modelo';
+import { ClienteService } from '../cliente.service';
 
 @Component({
     selector: 'app-cliente-listar',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GrupoConsumo } from '@app/pacotes/modelo/grupo-consumo.modelo';
-import { GrupoConsumoService } from '@app/pacotes/servico/grupo-consumo.service';
+import { GrupoConsumo } from '../grupo-consumo.modelo';
+import { GrupoConsumoService } from '../grupo-consumo.service';
 
 @Component({
     selector: 'app-grupo-consumo-excluir',

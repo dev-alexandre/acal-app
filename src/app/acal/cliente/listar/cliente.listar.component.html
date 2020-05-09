@@ -46,7 +46,7 @@
           </div>
           
         </th>
-s
+
       </tr>
 
     </thead>
@@ -69,30 +69,13 @@ s
 
         <th style="width: 32%">
           <div class="input-group">
-            
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary" 
-                (click)=changeTipoDocumento() >
-                {{tipoDocumento}}
-              </button>
-            </div>
-            
 
             <input 
-              *ngIf="tipoDocumento === 'C.P.F.'"
               class="form-control "
               [(ngModel)]="filtro.documento.valor" 
-              mask="000.000.000-00"
+              mask="0*"
               (keyup.enter)="buscar()" 
               />
-              
-              <input 
-                *ngIf="tipoDocumento === 'C.N.P.J.'"
-                class="form-control"
-                [(ngModel)]="filtro.documento.valor" 
-                mask="00.000.000/0000-00"
-                (keyup.enter)="buscar()" 
-            />
 
           </div>
         </th>
@@ -121,7 +104,9 @@ s
         </td>
         
         <td> 
-          {{cliente.documento | mask: '000.000.000-00'}}
+          {{cliente.documento.length === 11 ? 
+            (cliente.documento | mask: '000.000.000/00' ) : (cliente.documento | mask: '00.000.000/0000-00')
+          }}
         </td>
 
       </tr>

@@ -2,11 +2,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnaliseFiltro, ElementoFiltro } from '@app/pacotes/filtro/_index';
-import { Analise } from '@app/pacotes/modelo/analise.modelo';
-import { Parametro, Table } from '@app/pacotes/modelo/_index';
-import { AnaliseService, AtualizacaoService } from '@app/pacotes/servico/_index';
 import { ReferenciaFiltro } from '@app/pacotes/filtro/referencia.filtro';
 import { ColetaFiltro } from '@app/pacotes/filtro/coleta.filtro';
+import { Table } from '@app/pacotes/modelo/_index';
+import { Analise } from '../analise.modelo';
+import { Parametro } from '@app/acal/parametro/parametro.modelo';
+import { AnaliseService } from '../analise.service';
+import { AtualizacaoService } from '@app/pacotes/servico/_index';
 
 @Component({
     selector: 'app-analise-listar',

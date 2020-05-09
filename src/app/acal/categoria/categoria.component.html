@@ -9,7 +9,7 @@
 
         <th colspan="2" style="width: 10%">
           
-          <button type="button" [disabled]=true class="btn btn-outline-success btn-sm btn-block">
+          <button type="button" [disabled]=true class="btn btn-outline-success btn-block">
             <i class="fa fa-plus"></i>
           </button>
 
@@ -17,7 +17,7 @@
 
         <th class="w-90" style="width: 90%" (click)="ordernar('nome')" >
           
-          <div class="d-flex justify-content-between  align-items-center">
+          <div class="d-flex justify-content-between align-items-center">
             
             <div>
               Nome
@@ -39,14 +39,14 @@
       
       <tr>
         <th colspan="2" style="width: 8%">
-          <button type="button" (click)="buscar()" class="btn btn-success btn-sm btn-block">
+          <button type="button" [disabled]=true (click)="buscar()" class="btn btn-success btn-block">
             Buscar
           </button>
         </th>
 
         <th style="width: 90%">
           <input 
-            class="form-control form-control-sm"
+            class="form-control"
             [(ngModel)]="filtro.nome.valor" 
             [disabled]=true
            />
@@ -60,13 +60,13 @@
       <tr *ngFor="let categoria of table.content">
 
         <td>
-          <button type="button" [disabled]=true class="btn btn-outline-primary btn-sm btn-block btn-sm">
+          <button type="button" [disabled]=true class="btn btn-outline-primary btn-block">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
 
         <td>
-          <button type="button" [disabled]=true class="btn btn-outline-danger btn-sm btn-block btn-sm">
+          <button type="button" [disabled]=true class="btn btn-outline-danger btn-block">
             <i class="fa fa-times"></i>
           </button>
         </td>

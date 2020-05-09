@@ -4,8 +4,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@app/layout/layout.module';
-import { ClienteService } from '@app/pacotes/servico/cliente.service';
-import { ParametroService } from '@app/pacotes/servico/_index';
 import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
 import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +16,8 @@ import { ClienteIncluirComponent } from './incluir/cliente.incluir.component';
 import { ClienteListarComponent } from './listar/cliente.listar.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { BibliotecaModule } from '@app/biblioteca/biblioteca.module';
+import { ClienteService } from './cliente.service';
+import { ParametroService } from '../parametro/parametro.service';
 
 
 @NgModule({

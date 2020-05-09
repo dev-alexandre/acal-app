@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@app/layout/layout.module';
-import { AnaliseService, ParametroService } from '@app/pacotes/servico/_index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AnaliseRouting } from './analise.routing';
 import { AnaliseComponent } from './analise.component';
@@ -15,6 +14,8 @@ import { AnaliseListarComponent } from './listar/analise.listar.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
+import { AnaliseService } from './analise.service';
+import { ParametroService } from '../parametro/parametro.service';
 
 @NgModule({
   imports:

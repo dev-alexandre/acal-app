@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GrupoConsumo } from '@app/pacotes/modelo/grupo-consumo.modelo';
+import { GrupoConsumo } from '../grupo-consumo.modelo';
 
 @Component({
     selector: 'app-grupo-consumo-visualizar',

@@ -22,14 +22,22 @@ const routes: Routes = [
           path: 'editar',
           canActivate: [AuthGuard],
           component: AnaliseEditarComponent,
-          data: { title: ':: Acal Web :: Análise :: Editar ::' }
+          data:
+          {
+            roles: [FuncaoEnum.Atendente, FuncaoEnum.Especialista],
+            title: ':: Acal Web :: Análise :: Editar ::'
+          }
         },
 
         {
           path: 'excluir',
           canActivate: [AuthGuard],
           component: AnaliseExcluirComponent,
-          data: { title: ':: Acal Web :: Análise :: Excluir ::' }
+          data:
+          {
+            roles: [FuncaoEnum.Atendente, FuncaoEnum.Especialista],
+            title: ':: Acal Web :: Análise :: Excluir ::' 
+          }
         },
 
         {

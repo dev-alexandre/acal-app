@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from '@app/pacotes/servico/base.service';
 import { environment } from 'environments/environment';
-import { GrupoConsumo } from '../modelo/grupo-consumo.modelo';
-import { GrupoConsumoFiltro } from '../filtro/grupo-consumo.filtro';
+import { GrupoConsumo } from './grupo-consumo.modelo';
+import { GrupoConsumoFiltro } from '@app/pacotes/filtro/grupo-consumo.filtro';
 
 @Injectable()
 export class GrupoConsumoService extends BaseService<GrupoConsumo, GrupoConsumoFiltro>  {

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Parametro } from '@app/pacotes/modelo/_index';
+import { Parametro } from '../parametro.modelo';
 
 @Component({
     selector: 'app-parametro-visualizar',

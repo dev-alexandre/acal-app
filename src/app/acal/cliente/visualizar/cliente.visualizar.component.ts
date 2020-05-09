@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Parametro } from '@app/pacotes/modelo/_index';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
+import { Cliente } from '../cliente.modelo';
 
 @Component({
     selector: 'app-cliente-visualizar',

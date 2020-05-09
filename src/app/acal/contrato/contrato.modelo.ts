@@ -1,7 +1,7 @@
-import { GrupoConsumo } from '@app/pacotes/modelo/grupo-consumo.modelo';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
 import { Matricula } from '../matricula/matricula.modelo';
 import { Hidrometro } from '../analise/hidrometro/hidrometro.modelo';
+import { GrupoConsumo } from '../grupo-consumo/grupo-consumo.modelo';
+import { Cliente } from '../cliente/cliente.modelo';
 
 export class Contrato {
 

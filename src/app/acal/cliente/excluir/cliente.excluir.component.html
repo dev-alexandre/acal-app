@@ -1,37 +1,92 @@
-<div class="row clearfix">
+<div class="row clearfix" *ngIf="data">
   <div class="col-12">
-
+    
     <div class="card">
       
       <div class="header">
-        <h2>Excluir Cliente</h2>
+        <h2>Incluir Cliente</h2>
       </div>
-
+      
       <div class="body">
-
         <div class="form-group">
-          <label>Nome:</label>
-          <input  
-            [disabled]="true"
-            [(ngModel)]="cliente.nome" 
-            class="form-control " 
-            name="text" 
-            >
-        </div>
+        
+          <div class="row">
+            <div class="col-md-8 col-12 form-group">
 
-      </div>
+              <label>* Nome:</label>
+                
+              <input 
+                type="text" 
+                class="form-control"
+                [ngModel]="data.nome"
+                [disabled]=true
+              >
+    
+            </div>
 
+            <div  class="col-md-4 col-12 form-group">
+              <label>* Documento:</label>
+                
+              <app-input-documento 
+                [habilitado]="false"
+                [documento]="data.documento"  
+              >
+                
+              </app-input-documento>
 
-      <div class="footer mb-4">
+            </div>
           
-        <div class="col">
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
-            <button class="btn btn-outline-danger" type="button" (click)="excluir()" >Excluir</button>
           </div>
-        </div>
-     
-    </div>
 
+          <div class="row">
+            <div  class="col-md-6 col-12 form-group">
+              <label>Data de nascimento:</label>
+                
+              <input 
+                type="text" 
+                class="form-control"
+                [ngModel]="dataFormatada" 
+                [disabled]=true
+              >
+              
+            </div>
+
+            <div  class="col-md-6 col-12 form-group">
+              
+              <label>Numero de telefone:</label>
+                
+              <input 
+                type="text" 
+                mask="(00) 0 0000-0000"
+                class="form-control"
+                [ngModel]="data.telefone"
+                [disabled]=true
+              >
+              
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+      
+      
+      <div class="footer mb-4">
+        
+          <div class="col">
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+              <button class="btn btn-outline-danger" type="button" (click)="deletar()" >Excluir</button>
+            </div>
+          </div>
+
+        
+      </div>
+      
+    </div>
+    
   </div>
+    
 </div>
+  

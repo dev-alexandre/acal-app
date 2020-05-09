@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ElementoFiltro } from '@app/pacotes/filtro/_index';
-import { Analise } from '@app/pacotes/modelo/analise.modelo';
-import { Parametro, Table } from '@app/pacotes/modelo/_index';
+import { Table } from '@app/pacotes/modelo/_index';
 import { AtualizacaoService } from '@app/pacotes/servico/_index';
 import { ParametroFiltro } from './../../../pacotes/filtro/parametro.filtro';
-import { ParametroService } from './../../../pacotes/servico/parametro.service';
+import { Parametro } from '../parametro.modelo';
+import { Analise } from '@app/acal/analise/analise.modelo';
+import { ParametroService } from '../parametro.service';
 
 @Component({
     selector: 'app-parametro-listar',

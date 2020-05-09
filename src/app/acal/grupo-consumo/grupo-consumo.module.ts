@@ -13,9 +13,9 @@ import { GrupoConsumoExcluirComponent } from './excluir/grupo-consumo.excluir.co
 import { GrupoConsumoVisualizarComponent } from './visualizar/grupo-consumo.visualizar.component';
 import { GrupoConsumoIncluirComponent } from './incluir/grupo-consumo.incluir.component';
 import { GrupoConsumoListarComponent } from './listar/grupo-consumo.listar.component';
-import { GrupoConsumoService } from '@app/pacotes/servico/grupo-consumo.service';
 import { GrupoConsumoRouting } from './grupo-consumo.routing';
 import { NgxMaskModule } from 'ngx-mask';
+import { GrupoConsumoService } from './grupo-consumo.service';
 
 
 @NgModule({

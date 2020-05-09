@@ -1,8 +1,11 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Analise } from '@app/pacotes/modelo/_index';
-import { AnaliseService } from '@app/pacotes/servico/_index';
+import { AnaliseService } from '../analise.service';
+import { Analise } from '../analise.modelo';
+import { Parametro } from '@app/acal/parametro/parametro.modelo';
+import { Coleta } from '../coleta.modelo';
 
 @Component({
     selector: 'app-analise-editar',
@@ -11,20 +14,24 @@ import { AnaliseService } from '@app/pacotes/servico/_index';
 
 export class AnaliseEditarComponent implements OnInit {
 
-  public analise: Analise;
+  public data: Analise;
   public form: FormGroup;
   public submited: boolean;
+  public items: FormArray;
 
   constructor(
     public router: Router,
+    private fb: FormBuilder,
     public activeRouter: ActivatedRoute,
+    public toast: ToastrService,
     public service: AnaliseService) {
   }
 
   ngOnInit(): void {
-    this.analise = JSON.parse(localStorage.getItem('[analise][editar]'));
+    this.data = JSON.parse(localStorage.getItem('[analise][editar]'));
     localStorage.removeItem('[analise][editar]');
-    if (!this.analise) {
+
+    if (!this.data) {
       this.voltar();
     }
 
@@ -45,9 +52,9 @@ export class AnaliseEditarComponent implements OnInit {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
 
-        (response) => {
-
-        }
+          (error) => {
+            this.toast.info(error);
+          }
     );
   }
 
@@ -56,18 +63,43 @@ export class AnaliseEditarComponent implements OnInit {
   }
 
   public formulario() {
-    /*
-    this.form = new FormGroup({
 
-        nome: new FormControl(
-          this.analise.nome , [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(50)
-        ]),
+    this.form = new FormGroup(
+      {
+        referencia: this.fb.group({
+          mes: [this.data.referencia.mes, Validators.required],
+          ano: [this.data.referencia.ano, Validators.required]
+        }),
+
+        coletas: this.fb.array([]),
+
       }
     );
-    */
+    this.buildColetas();
+
+  }
+
+  private buildColetas() {
+    this.data.coletas.forEach( coleta => {
+      this.buildColeta(coleta);
+    });
+  }
+
+  private buildColeta(coleta: Coleta) {
+    this.items = this.form.get('coletas') as FormArray;
+
+    this.items.push(
+      this.fb.group({
+
+        parametro: this.fb.group({
+          nome: coleta.parametro.nome
+        }),
+
+        exigido: [coleta.analisado, Validators.required],
+        analisado: [coleta.analisado, Validators.required],
+        conforme:  [coleta.exigido, Validators.required],
+      })
+    );
   }
 
   get nome() {

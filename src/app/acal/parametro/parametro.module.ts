@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@app/layout/layout.module';
-import { AnaliseService, ParametroService } from '@app/pacotes/servico/_index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ParametroIncluirComponent } from './incluir/parametro.incluir.component';
 import { ParametroListarComponent } from './listar/parametro.listar.component';
@@ -14,6 +13,8 @@ import { ParametroVisualizarComponent } from './visualizar/parametro.visualizar.
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '@app/_autenticacao/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@app/_autenticacao/_helpers/error.interceptor';
+import { AnaliseService } from '../analise/analise.service';
+import { ParametroService } from './parametro.service';
 
 
 @NgModule({

@@ -1,10 +1,10 @@
-import { ClienteService } from './../../../pacotes/servico/cliente.service';
 import { Component, OnInit } from '@angular/core';
-import { Parametro } from '@app/pacotes/modelo/_index';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ParametroService } from '@app/pacotes/servico/_index';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
+import { Cliente } from '../cliente.modelo';
+import { ClienteService } from '../cliente.service';
 
 @Component({
     selector: 'app-cliente-excluir',
@@ -13,38 +13,43 @@ import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
 
 export class ClienteExcluirComponent implements OnInit {
 
-  public cliente: Cliente;
-  public form: FormGroup;
+  public aba: string;
+
+  public data: Cliente;
   public submited: boolean;
 
   constructor(
+    private toastr: ToastrService,
     public router: Router,
     public activeRouter: ActivatedRoute,
     public service: ClienteService) {
   }
 
   ngOnInit(): void {
-    this.cliente = JSON.parse(localStorage.getItem('[cliente][excluir]'));
+
+    this.data = JSON.parse(localStorage.getItem('[cliente][excluir]'));
     localStorage.removeItem('[cliente][excluir]');
 
-    if (!this.cliente) {
+    if (!this.data) {
       this.voltar();
     }
 
-    this.formulario();
   }
 
-  public excluir(): void {
 
-    this.cliente = this.form.value;
+  public deletar(): void {
 
     this.service
-      .deletarPorNome(this.cliente.nome)
+
+      .deletar(this.data.id)
         .subscribe(
-          (response) => {
+          () => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
-        (response) => {}
+
+          (error: any) => {
+            this.toastr.error(error);
+          }
     );
   }
 
@@ -52,22 +57,16 @@ export class ClienteExcluirComponent implements OnInit {
     this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
   }
 
-  public formulario() {
-
-    this.form = new FormGroup({
-
-      nome: new FormControl(
-        this.cliente.nome , [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50)
-      ]), }
-    );
-
+  changeNavTab(aba: string) {
+    this.aba = aba;
   }
 
-  get nome() {
-    return this.form.get('nome');
+  get dataFormatada() {
+    if (this.data.dataNascimento) {
+      return moment(this.data.dataNascimento).format('DD/MM/YYYY');
+    }
+
+    return '';
   }
 
 }

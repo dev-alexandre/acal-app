@@ -2,25 +2,51 @@
             
   <div class="input-group-prepend">
     <button  type="button" class="btn btn-outline-secondary" 
-      (click)= changeTipoDocumento()>
+      (click) = changeTipoDocumento()
+      [disabled]=!habilitado
+      [ngClass]="
+      {
+        'btn-outline':  submetido === null,
+        'btn-outline-success': submetido && valido, 
+        'btn-outline-danger': submetido && !valido 
+      }"
+      >
       {{tipoDocumento}}
     </button>
   </div>
 
   <input 
-  *ngIf="tipoDocumento === 'C.P.F.'"
-  [(ngModel)]="documento"
+   *ngIf="tipoDocumento === this.CPF"
+   (ngModelChange)="onChange($event)"
+   [(ngModel)]="documento"
+   [disabled]=!habilitado
     type="text" 
     mask="000.000.000-00"
     class="form-control"
+    [ngClass]="
+    {
+      'is-valid': submetido && valido, 
+      'is-invalid': submetido && !valido 
+    }"
   >
-  
+
   <input 
-    *ngIf="tipoDocumento === 'C.N.P.J.'"
-    [(ngModel)]="documento"
+   *ngIf="tipoDocumento === this.CNPJ"
+   (ngModelChange)="onChange($event)"
+   [(ngModel)]="documento"
+   [disabled]=!habilitado
     type="text" 
     mask="00.000.000/0000-00"
     class="form-control"
+    [ngClass]="
+    {
+      'is-valid': submetido && valido, 
+      'is-invalid': submetido && !valido 
+    }"
   >
+
+  <span class="invalid-feedback" *ngIf="submetido && !valido">
+    Campo é Obrigatório
+  </span>
 
 </div>

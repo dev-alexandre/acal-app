@@ -1,8 +1,8 @@
-import { ParametroService } from './../../../pacotes/servico/parametro.service';
 import { Component, OnInit } from '@angular/core';
-import { Parametro } from '@app/pacotes/modelo/_index';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Parametro } from '../parametro.modelo';
+import { ParametroService } from '../parametro.service';
 
 @Component({
     selector: 'app-parametro-incluir',

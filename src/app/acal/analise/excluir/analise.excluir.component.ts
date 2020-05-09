@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Analise } from '@app/pacotes/modelo/_index';
-import { AnaliseService } from '@app/pacotes/servico/_index';
+import { Analise } from '../analise.modelo';
+import { AnaliseService } from '../analise.service';
 
 @Component({
     selector: 'app-analise-excluir',

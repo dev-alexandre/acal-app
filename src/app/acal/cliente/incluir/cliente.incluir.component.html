@@ -43,7 +43,10 @@
               <div  class="col-md-4 col-12 form-group">
                 <label>* Documento:</label>
                   
-                <app-input-documento>
+                <app-input-documento 
+                  [habilitado]="true"  
+                  [submetido]="submited" 
+                  (setDocumento)=(setDocumento($event))>
                   
                 </app-input-documento>
 

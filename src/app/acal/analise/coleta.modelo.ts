@@ -1,4 +1,4 @@
-import { Parametro } from './_index';
+import { Parametro } from '../parametro/parametro.modelo';
 
 export class Coleta {
 

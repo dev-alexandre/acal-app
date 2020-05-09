@@ -1,10 +1,10 @@
+import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Cliente } from '@app/pacotes/modelo/cliente.modelo';
-import { ClienteService } from '@app/pacotes/servico/cliente.service';
 import { ToastrService } from 'ngx-toastr';
-import * as moment from 'moment';
+import { Cliente } from '../cliente.modelo';
+import { ClienteService } from '../cliente.service';
 
 @Component({
     selector: 'app-cliente-incluir',
@@ -40,19 +40,20 @@ export class ClienteIncluirComponent implements OnInit {
       return;
     }
 
-    const cliente: Cliente = this.form.value;
-    const date = moment(this.form.value.dataNascimento, 'DDMMYYYY');
+    if (this.form.value.dataNascimento) {
+      const date = moment(this.form.value.dataNascimento, 'DDMMYYYY');
 
-    if (!date.isValid()) {
-      this.toastr.error(this.form.value.dataNascimento + ' não é um data valida');
-      return;
+      if (!date.isValid()) {
+        this.toastr.error(this.form.value.dataNascimento + ' não é um data valida');
+        return;
+      }
+      this.form.value.dataNascimento = date.toDate();
+
     }
-    cliente.dataNascimento = date.toDate();
-
 
     this.service
 
-      .salvar(cliente)
+      .salvar(this.form.value)
         .subscribe(
           () => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
@@ -83,7 +84,7 @@ export class ClienteIncluirComponent implements OnInit {
         '', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(50)
+        Validators.maxLength(14)
       ]),
 
       dataNascimento: new FormControl(
@@ -96,6 +97,14 @@ export class ClienteIncluirComponent implements OnInit {
 
       }
     );
+
+  }
+
+  public setDocumento (documentoValue: string): void {
+
+    this.form.patchValue({
+      documento: documentoValue
+    });
 
   }
 
