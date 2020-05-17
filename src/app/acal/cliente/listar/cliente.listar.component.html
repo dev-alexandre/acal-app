@@ -1,6 +1,5 @@
 <app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
-
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-striped table-bordered table-sm">
     <thead class="thead-light">
 
       <tr>
@@ -50,7 +49,7 @@
       </tr>
 
     </thead>
-   
+    
     <thead>
       <tr>
         <th colspan="2" style="width: 8%">
@@ -64,7 +63,7 @@
             class="form-control "
             [(ngModel)]="filtro.nome.valor" 
             (keyup.enter)="buscar()" 
-           />
+            />
         </th>
 
         <th style="width: 32%">
@@ -88,13 +87,13 @@
       <tr *ngFor="let cliente of table.content">
 
         <td>
-          <button type="button" (click)="editar(cliente)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+          <button type="button" (click)="editar(cliente)" class="btn btn-outline-primary btn-block">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
 
         <td>
-          <button type="button" (click)="excluir(cliente)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+          <button type="button" (click)="excluir(cliente)" class="btn btn-outline-danger btn-block">
             <i class="fa fa-times"></i>
           </button>
         </td>
@@ -113,6 +112,5 @@
       
     </tbody>
   </table>
-
 </app-table>
 

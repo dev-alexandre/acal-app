@@ -1,7 +1,6 @@
 
 <app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
-
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-striped table-bordered table-sm">
     <thead class="thead-light">
       <tr>
 
@@ -51,7 +50,7 @@
           <div class="d-flex justify-content-between  align-items-center">
             
             <div>
-              Valor
+              Valor (R$)
             </div>
             
             <div *ngIf="filtro.valor">
@@ -66,7 +65,7 @@
 
       </tr>
     </thead>
-   
+    
     <thead>
       
       <tr>
@@ -77,7 +76,7 @@
         </th>
 
         <th>
-          <app-selecionar-categoria 
+          <app-selecionar-categoria
             (setCategoria)="setCategoria($event)">
           </app-selecionar-categoria>
         </th>
@@ -87,17 +86,16 @@
             class="form-control"
             [(ngModel)]="filtro.nome.valor" 
             (keyup.enter)="buscar()" 
-           />
+            />
         </th>
 
         <th>
           <input 
             class="form-control"
             [(ngModel)]="filtro.valor.valor"
-            mask="0*"
-            prefix="R$ " 
+            mask="separator.2" thousandSeparator=","
             (keyup.enter)="buscar()" 
-         />
+          />
         </th>
 
       </tr>
@@ -125,11 +123,10 @@
 
         <td> {{data.nome}}</td>
 
-        <td> {{data.valor | currency:'R$ '}}</td>
+        <td> {{data.valor | currency : 'BRL'}}</td>
 
       </tr>
     </tbody>
   </table>
-
 </app-table>
 

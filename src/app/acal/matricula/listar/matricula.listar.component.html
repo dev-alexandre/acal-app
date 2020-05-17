@@ -1,34 +1,62 @@
 
 <app-table *ngIf="table" [table]=table [filtro]=filtro (setFiltro)="setFiltro($event)">
 
-  <table class="table table-hover table-bordered table-sm">
+  <table class="table table-hover table-striped table-bordered table-sm">
     <thead class="thead-light">
       <tr>
 
         <th colspan="2" style="width: 8%;">
           
-          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-sm btn-block">
+          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-block">
             <i class="fa fa-plus"></i>
           </button>
 
         </th>
 
-
-        <th (click)="ordernar('nome')" style="width: 52%;">
+        <th (click)="ordernar('logradouro')" style="width: 72%;">
           <div class="d-flex justify-content-between  align-items-center">
             
             <div>
-              Nome
+              Logradouro
             </div>
             
-            <div *ngIf="filtro.nome">
-              <i class="icon-arrow-up" *ngIf="filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
-              <i class="icon-arrow-down" *ngIf="!filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
+            <div *ngIf="filtro.logradouro">
+              <i class="icon-arrow-up" *ngIf="filtro.logradouro.orderAsc && filtro.logradouro.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.logradouro.orderAsc && filtro.logradouro.orderAsc !== null"></i>
+            </div>
+          
+          </div>
+        </th>
+     
+        <th (click)="ordernar('numero')" style="width: 10%;">
+          <div class="d-flex justify-content-between  align-items-center">
+            
+            <div>
+              Número
+            </div>
+            
+            <div *ngIf="filtro.numero">
+              <i class="icon-arrow-up" *ngIf="filtro.numero.orderAsc && filtro.numero.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.numero.orderAsc && filtro.numero.orderAsc !== null"></i>
             </div>
           
           </div>
         </th>
 
+        <th (click)="ordernar('letra')" style="width: 10%;">
+          <div class="d-flex justify-content-between  align-items-center">
+            
+            <div>
+              Letra
+            </div>
+            
+            <div *ngIf="filtro.letra">
+              <i class="icon-arrow-up" *ngIf="filtro.letra.orderAsc && filtro.letra.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.letra.orderAsc && filtro.letra.orderAsc !== null"></i>
+            </div>
+          
+          </div>
+        </th>
 
       </tr>
     </thead>
@@ -37,19 +65,34 @@
       
       <tr>
         <th colspan="2">
-          <button type="button" (click)="buscar()" class="btn btn-success btn-sm btn-block">
+          <button type="button" (click)="buscar()" class="btn btn-success btn-block">
             Buscar
           </button>
         </th>
 
         <th>
-          <input 
-            class="form-control form-control-sm"
-            [(ngModel)]="filtro.nome.valor" 
-            (keyup.enter)="buscar()" 
-           />
+          <app-selecionar-logradouro 
+            (setValue)=selecionarLogradouro($event)
+          >
+
+          </app-selecionar-logradouro>
         </th>
 
+        <th>
+          <input 
+            class="form-control"
+            [(ngModel)]="filtro.numero.valor" 
+            (keyup.enter)="buscar()" 
+          />
+        </th>
+        
+        <th>
+          <input 
+            class="form-control"
+            [(ngModel)]="filtro.letra.valor" 
+            (keyup.enter)="buscar()" 
+          />
+        </th>
       </tr>
 
 
@@ -60,18 +103,28 @@
       <tr *ngFor="let data of table.content" (click)="visualizar(data)">
 
         <td>
-          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-block ">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
 
         <td>
-          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-block">
             <i class="fa fa-times"></i>
           </button>
         </td>
 
-        <td> {{data.nome}}</td>
+        <td> 
+          {{data.logradouro.tipoLogradouro.nome +' '+ data.logradouro.nome }}
+        </td>
+      
+        <td> 
+          {{data.numero}}
+        </td>
+      
+        <td>
+          {{data.letra}}
+        </td>
 
       </tr>
     </tbody>

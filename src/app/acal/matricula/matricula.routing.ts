@@ -25,7 +25,7 @@ const routes: Routes = [
           data:
           {
             roles: [FuncaoEnum.Especialista],
-            title: ':: Acal Web :: Grupo Consumo :: Editar ::' ,
+            title: ':: Acal Web :: Matrícula :: Editar ::' ,
           }
         },
 
@@ -36,7 +36,7 @@ const routes: Routes = [
           data:
           {
             roles: [FuncaoEnum.Especialista],
-            title: ':: Acal Web :: Grupo Consumo :: Excluir ::',
+            title: ':: Acal Web :: Matrícula :: Excluir ::',
           }
         },
 
@@ -47,7 +47,7 @@ const routes: Routes = [
           data:
           {
             roles: [FuncaoEnum.Especialista],
-            title: ':: Acal Web :: Grupo Consumo :: Incluir ::',
+            title: ':: Acal Web :: Matrícula :: Incluir ::',
           }
         },
 
@@ -57,7 +57,7 @@ const routes: Routes = [
           component: MatriculaListarComponent,
           data:
           {
-            title: ':: Acal Web :: Grupo Consumo :: Listar ::',
+            title: ':: Acal Web :: Matrícula :: Listar ::',
           }
         },
 
@@ -67,7 +67,7 @@ const routes: Routes = [
           component: MatriculaVisualizarComponent,
           data:
           {
-            title: ':: Acal Web :: Grupo Consumo :: Visualizar ::',
+            title: ':: Acal Web :: Matrícula :: Visualizar ::',
           }
         },
       ]

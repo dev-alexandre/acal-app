@@ -1,7 +1,14 @@
 <select 
   [ngModel]="categoria"
   (ngModelChange)="onModelChange($event)" 
-  class="form-control form-control-sm " 
+  [compareWith]="compare"
+  class="form-control" 
+
+  [ngClass]="
+  {
+    'is-valid':  (valido  && submetido), 
+    'is-invalid': (!valido && submetido) 
+  }"
   >
   <option 
     *ngFor="let c of categorias" 
@@ -10,4 +17,11 @@
   </option>
 
 </select>
-    
+
+<span class="invalid-feedback" *ngIf="(!valido && submetido)">
+  Categoria é Obrigatório
+</span>
+
+<span class="valid-feedback" *ngIf="(valido && submetido)">
+  Valido
+</span>

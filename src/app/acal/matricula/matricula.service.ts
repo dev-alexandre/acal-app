@@ -6,7 +6,9 @@ import { BaseService } from '@app/pacotes/servico/base.service';
 import { Filtro } from '@app/pacotes/filtro/filtro';
 import { Matricula } from './matricula.modelo';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MatriculaService extends BaseService<Matricula, Filtro>  {
 
   getServico(): string {

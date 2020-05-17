@@ -1,8 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Matricula } from '../matricula.modelo';
 import { MatriculaService } from '../matricula.service';
+import { Logradouro } from '@app/acal/logradouro/logradouro.modelo';
 
 @Component({
     selector: 'app-matricula-incluir',
@@ -11,18 +13,17 @@ import { MatriculaService } from '../matricula.service';
 
 export class MatriculaIncluirComponent implements OnInit {
 
-  public data: Matricula;
   public form: FormGroup;
   public submited: boolean;
 
   constructor(
     public router: Router,
+    public toast: ToastrService,
     public activeRouter: ActivatedRoute,
     public service: MatriculaService) {
   }
 
   ngOnInit(): void {
-    this.data = new Matricula();
     this.formulario();
   }
 
@@ -41,7 +42,7 @@ export class MatriculaIncluirComponent implements OnInit {
           },
 
         (response) => {
-
+          this.toast.info(response);
         }
     );
   }
@@ -54,18 +55,49 @@ export class MatriculaIncluirComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      nome: new FormControl(
-        '', [
+      numero: new FormControl(
+        null, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50)
-      ]), }
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+      letra: new FormControl(
+        null, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+      logradouro: new FormControl(
+        null, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+    }
     );
 
   }
 
-  get nome() {
-    return this.form.get('nome');
+  public setLogradouro(logradouro: Logradouro){
+    this.form.patchValue({
+      logradouro: logradouro
+    });
+  }
+
+
+  get numero() {
+    return this.form.get('numero');
+  }
+
+  get letra() {
+    return this.form.get('letra');
+  }
+
+  get logradouro() {
+    return this.form.get('logradouro');
   }
 
 }

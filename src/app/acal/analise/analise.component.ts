@@ -18,7 +18,10 @@ export class AnaliseComponent implements OnDestroy {
   public darkClass: string;
   private ngUnsubscribe = new Subject();
 
-  constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private themeService: ThemeService) {
+  constructor(
+    private sidebarService: SidebarService,
+    private cdr: ChangeDetectorRef,
+    private themeService: ThemeService) {
     this.sidebarVisible = true;
     this.isResizing = false;
     this.darkClass = '';

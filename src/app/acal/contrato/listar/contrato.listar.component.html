@@ -7,28 +7,41 @@
 
         <th colspan="2" style="width: 8%;">
           
-          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-sm btn-block">
+          <button type="button" (click)="incluir()" class="btn btn-outline-success btn-block">
             <i class="fa fa-plus"></i>
           </button>
 
         </th>
 
-
-        <th (click)="ordernar('nome')" style="width: 92%;">
+        <th (click)="ordernar('cliente')" style="width: 42%;">
           <div class="d-flex justify-content-between  align-items-center">
             
             <div>
-              Nome
+              Cliente
             </div>
             
-            <div *ngIf="filtro.nome">
-              <i class="icon-arrow-up" *ngIf="filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
-              <i class="icon-arrow-down" *ngIf="!filtro.nome.orderAsc && filtro.nome.orderAsc !== null"></i>
+            <div *ngIf="filtro.cliente">
+              <i class="icon-arrow-up" *ngIf="filtro.cliente.orderAsc && filtro.cliente.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.cliente.orderAsc && filtro.cliente.orderAsc !== null"></i>
             </div>
           
           </div>
         </th>
 
+        <th (click)="ordernar('numero')" style="width: 50%;">
+          <div class="d-flex justify-content-between  align-items-center">
+            
+            <div>
+              Número
+            </div>
+            
+            <div *ngIf="filtro.numero">
+              <i class="icon-arrow-up" *ngIf="filtro.numero.orderAsc && filtro.numero.orderAsc !== null"></i>
+              <i class="icon-arrow-down" *ngIf="!filtro.numero.orderAsc && filtro.numero.orderAsc !== null"></i>
+            </div>
+          
+          </div>
+        </th>
 
       </tr>
     </thead>
@@ -37,21 +50,28 @@
       
       <tr>
         <th colspan="2">
-          <button type="button" (click)="buscar()" class="btn btn-success btn-sm btn-block">
+          <button type="button" (click)="buscar()" class="btn btn-success btn-block">
             Buscar
           </button>
         </th>
 
         <th>
           <input 
-            class="form-control form-control-sm"
-            [(ngModel)]="filtro.nome.valor" 
+            class="form-control"
+            [(ngModel)]="filtro.numero.valor" 
+            (keyup.enter)="buscar()" 
+           />
+        </th>
+        
+        <th>
+          <input 
+            class="form-control"
+            [(ngModel)]="filtro.cliente.valor" 
             (keyup.enter)="buscar()" 
            />
         </th>
 
       </tr>
-
 
     </thead>
     
@@ -60,18 +80,20 @@
       <tr *ngFor="let data of table.content" (click)="visualizar(data)">
 
         <td>
-          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-sm btn-block btn-sm">
+          <button type="button" (click)="editar(data)" class="btn btn-outline-primary btn-block">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
 
         <td>
-          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-sm btn-block btn-sm">
+          <button type="button" (click)="excluir(data)" class="btn btn-outline-danger btn-block">
             <i class="fa fa-times"></i>
           </button>
         </td>
 
-        <td> {{data.numero}}</td>
+        <td> {{data.cliente.nome}}</td>
+
+        <td> {{data.numero.numero + '.' +data.numero.ano +'.'+ data.numero.mes}}</td>
 
       </tr>
     </tbody>

@@ -3,11 +3,15 @@ import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 
 export class MatriculaFiltro extends Filtro {
 
-  nome: ElementoFiltro;
+  logradouro: ElementoFiltro;
+  letra: ElementoFiltro;
+  numero: ElementoFiltro;
 
   constructor() {
     super();
-    this.nome = new ElementoFiltro();
+    this.logradouro = new ElementoFiltro();
+    this.letra = new ElementoFiltro();
+    this.numero = new ElementoFiltro();
   }
 
 }

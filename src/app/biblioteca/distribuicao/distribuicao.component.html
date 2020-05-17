@@ -1,0 +1,39 @@
+<div class="card">
+  
+  <div class="header">
+    <h2 *ngIf="distribuicao"> 
+      {{distribuicao.nome}} 
+    </h2>
+    <!-- 
+    <app-card-actions></app-card-actions>
+    -->
+  </div>
+
+  <div class="body">
+    <ul class="list-unstyled list-referrals" *ngIf="distribuicao">
+      
+      <li *ngFor="let grupo of distribuicao.lista; let i = index;">
+        
+        <p>
+          <span class="value">{{grupo.valor}}</span>
+          <span class="text-muted float-right">{{grupo.nome}}</span>
+        </p>
+
+        <div 
+          class="progress progress-xs progress-transparent " 
+          
+          [ngClass]="{
+            'custom-color-blue':   (i%4) === 0,
+            'custom-color-purple': (i%4) === 1,
+            'custom-color-yellow': (i%4) === 2,
+            'custom-color-green':  (i%4) === 3 
+          }">
+          <div class="progress-bar" 
+            [ngStyle]="{'width.%': grupo.numero }">
+          </div>
+        </div>
+      </li>
+       
+    </ul>
+  </div>
+</div>

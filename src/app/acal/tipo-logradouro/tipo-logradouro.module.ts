@@ -1,3 +1,4 @@
+import { BibliotecaModule } from '@app/biblioteca/biblioteca.module';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ import { TipoLogradouroService } from './tipo-logradouro.service';
     FormsModule,
     TipoLogradouroRouting,
     LayoutModule,
+    BibliotecaModule,
   ],
 
   declarations:
@@ -46,6 +48,8 @@ import { TipoLogradouroService } from './tipo-logradouro.service';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
   ]
+
+
 
 })
 

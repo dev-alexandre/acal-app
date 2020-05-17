@@ -1,41 +1,66 @@
-<div class="row clearfix">
+<div  *ngIf="data" class="row clearfix">
   <div class="col-12">
-
+    
     <div class="card">
       
       <div class="header">
-        <h2>Visualizar Parâmetro</h2>
+        <h2>Visualizar Grupo Consumo</h2>
       </div>
+      
+      <div class="body row">
 
-      <div class="body">
-
-        <div class="form-group">
-          <label>Nome:</label>
-          <input  
-            [disabled]="true"
-            [(ngModel)]="data.nome" 
-            class="form-control " 
-            name="text" 
-            >
-        </div>
-
-      </div>
-
-
-        <div class="footer">
-          <div class="d-flex justify-content-between">
-            <div class="p-2">
-            </div>
-            
-            <div class="p-2">
-              <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
-            </div>
-            
-          </div>
+        <div class="form-group col-md-4 col-12">
+        
+          <label>* Categoria:</label>
+          
+          <input 
+            class="form-control" 
+            [(ngModel)]="data.categoria.nome"
+            [disabled]=true
+          >
           
         </div>
-     
-    </div>
 
+        <div class="form-group col-md-4 col-12">
+        
+          <label>* Nome:</label>
+
+          <input 
+            class="form-control" 
+            [(ngModel)]="data.nome"
+            [disabled]=true
+          >
+            
+        </div>
+        
+        <div class="form-group col-md-4 col-12">
+        
+          <label>* Valor:</label>
+         
+          <app-input-money 
+            [disabled]=true
+            [submetido]=submited
+            [value]="data.valor">
+          </app-input-money>
+          
+        </div>
+
+      </div>
+      
+      
+      <div class="footer mb-4">
+        
+          <div class="col">
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+            </div>
+          </div>
+        
+      </div>
+      
+    </div>
+    
   </div>
+
+  
 </div>

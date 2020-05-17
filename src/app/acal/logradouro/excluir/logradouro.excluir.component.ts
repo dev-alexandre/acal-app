@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,11 +13,10 @@ import { LogradouroService } from '../logradouro.service';
 export class LogradouroExcluirComponent implements OnInit {
 
   public data: Logradouro;
-  public form: FormGroup;
-  public submited: boolean;
 
   constructor(
     public router: Router,
+    public toast: ToastrService,
     public activeRouter: ActivatedRoute,
     public service: LogradouroService) {
   }
@@ -29,43 +29,24 @@ export class LogradouroExcluirComponent implements OnInit {
       this.voltar();
     }
 
-    this.formulario();
   }
 
   public excluir(): void {
 
-    this.data = this.form.value;
-
     this.service
-      .deletarPorNome(this.data.nome)
+      .deletar(this.data.id)
         .subscribe(
           (response) => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
-        (response) => {}
+        (response) => {
+          this.toast.info(response);
+        }
     );
   }
 
   voltar(): void {
     this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
-  }
-
-  public formulario() {
-
-    this.form = new FormGroup({
-
-      nome: new FormControl(
-        this.data.nome , [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50)
-      ]), }
-    );
-
-  }
-
-  get nome() {
-    return this.form.get('nome');
   }
 
 }

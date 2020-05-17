@@ -1,0 +1,77 @@
+<ng-container *ngIf="this.data">
+
+  <div class="input-group">
+    <input 
+      type="text" 
+      class="form-control" 
+      [(ngModel)]=data.nome
+      [disabled]=true
+      [ngClass]="
+      {
+        'is-valid':  (valido && submetido), 
+        'is-invalid': (!valido && submetido) 
+      }"
+      >
+    <div class="input-group-append">
+      <button 
+        class="btn btn-outline-secondary" 
+        (click)="limpar();this.nome = ''" 
+        type="button"
+        [ngClass]="
+        {
+          'btn-outline-success':  (valido && submetido), 
+          'btn-outline-danger': (!valido && submetido) 
+        }"
+        >x</button>
+    </div>
+    
+    <span class="valid-feedback" *ngIf="(valido && submetido)">
+      Válido
+    </span>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="!this.data">
+
+  <input 
+    placeholder="Cliente"
+    class="form-control" 
+    [(ngModel)]=nome
+    (ngModelChange)=listar()
+    (focus)="focus = true" 
+    (focusout)="focus = false"
+    [disabled]=disabled
+    [ngClass]="
+    {
+      'is-valid':  (valido && submetido), 
+      'is-invalid': (!valido && submetido) 
+    }"
+    >
+
+  <span class="text-muted" *ngIf="(nome.length < 3) && focus">
+    Digite mais {{ 3 - nome.length }} caracteres
+  </span>
+
+  <ul class="list-group" *ngIf="datas && datas.length>0">
+      
+    <li class="list-group-item" *ngFor="let i of datas" >
+      <div class="d-flex justify-content-between" (click)=selecionar(i)>
+        {{i.nome}}
+        <small class="text-muted" *ngIf="i.documento.length === 11">{{i.documento | mask: '000.000.000-00'}}</small>
+        <small class="text-muted" *ngIf="i.documento.length === 14">{{i.documento | mask: '00.000.000/0000-00'}}</small>
+      </div>
+    </li>
+    
+  </ul>
+
+  <ul class="list-group" *ngIf="focus && datas.length == 0 && nome.length>2">
+    <li class="list-group-item">Nenhum Usuário atende aos criterios</li>
+  </ul>
+
+  <span class="invalid-feedback" *ngIf="(!valido && submetido && !focus)">
+    Cliente é Obrigatório
+  </span>
+
+</ng-container>

@@ -1,8 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Logradouro } from '../logradouro.modelo';
 import { LogradouroService } from '../logradouro.service';
+import { TipoLogradouro } from '@app/acal/tipo-logradouro/tipo-logradouro.modelo';
 
 @Component({
     selector: 'app-logradouro-incluir',
@@ -17,6 +19,7 @@ export class LogradouroIncluirComponent implements OnInit {
 
   constructor(
     public router: Router,
+    public toast: ToastrService,
     public activeRouter: ActivatedRoute,
     public service: LogradouroService) {
   }
@@ -40,8 +43,8 @@ export class LogradouroIncluirComponent implements OnInit {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
 
-        (response) => {
-
+        (error) => {
+          this.toast.info(error);
         }
     );
   }
@@ -54,18 +57,35 @@ export class LogradouroIncluirComponent implements OnInit {
 
     this.form = new FormGroup({
 
+      tipoLogradouro: new FormControl(
+        null, [
+        Validators.required,
+      ]),
+
       nome: new FormControl(
         '', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)
-      ]), }
+      ]),
+
+      }
     );
 
   }
 
+  public setTipoLogradouro(tipoLogradouro: TipoLogradouro) {
+    this.form.patchValue({
+      tipoLogradouro: tipoLogradouro
+    });
+  }
+
   get nome() {
     return this.form.get('nome');
+  }
+
+  get tipoLogradouro() {
+    return this.form.get('tipoLogradouro');
   }
 
 }

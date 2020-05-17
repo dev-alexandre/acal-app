@@ -1,0 +1,31 @@
+
+<select 
+  class="form-control" 
+  [ngModel]="data"
+  (ngModelChange)="onModelChange($event)" 
+  [compareWith]="compare"
+  [disabled]=disabled
+  [ngClass]="
+  {
+    'is-valid':  (valido && submetido), 
+    'is-invalid': (!valido && submetido) 
+  }"
+  >
+  <option [ngValue]=null >
+    Selecione
+  </option>
+
+  <optgroup label="{{item.nome | uppercase}}" *ngFor="let item of datas">
+    <option *ngFor="let logradouro of item.lista" [ngValue]=logradouro >
+      {{logradouro.tipoLogradouro.nome +' '+ logradouro.nome}}</option>
+  </optgroup>
+
+</select>
+
+<span class="invalid-feedback" *ngIf="(!valido && submetido)">
+  Logradouro é Obrigatório
+</span>
+
+<span class="valid-feedback" *ngIf="(valido && submetido)">
+  Válido
+</span>

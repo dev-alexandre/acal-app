@@ -1,3 +1,4 @@
+import { ElementoFiltro } from './../../../pacotes/filtro/elemento.filtro';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Table } from '@app/pacotes/modelo/_index';
@@ -5,6 +6,7 @@ import { AtualizacaoService } from '@app/pacotes/servico/_index';
 import { Matricula } from '../matricula.modelo';
 import { MatriculaFiltro } from '../matricula.filtro';
 import { MatriculaService } from '../matricula.service';
+import { Logradouro } from '@app/acal/logradouro/logradouro.modelo';
 
 @Component({
     selector: 'app-matricula-listar',
@@ -52,30 +54,51 @@ export class MatriculaListarComponent implements OnInit {
 
   public ordernar(filtro: string): void {
 
-    if (filtro === 'nome') {
-      this.filtro.nome.orderAsc = (!this.filtro.nome.orderAsc);
+    if (filtro === 'logradouro') {
+      this.filtro.logradouro.orderAsc = (!this.filtro.logradouro.orderAsc);
     } else {
-      this.filtro.nome.orderAsc = null;
+      this.filtro.logradouro.orderAsc = null;
+    }
+
+    if (filtro === 'numero') {
+      this.filtro.numero.orderAsc = (!this.filtro.numero.orderAsc);
+    } else {
+      this.filtro.numero.orderAsc = null;
+    }
+
+    if (filtro === 'letra') {
+      this.filtro.letra.orderAsc = (!this.filtro.letra.orderAsc);
+    } else {
+      this.filtro.letra.orderAsc = null;
     }
 
     this.buscar();
   }
 
-  incluir(): void {
+  public selecionarLogradouro(lograoduro: Logradouro): void {
+    if (lograoduro) {
+      this.filtro.logradouro.valor = lograoduro.nome;
+    } else {
+      this.filtro.logradouro = new ElementoFiltro();
+    }
+    this.buscar();
+  }
+
+  public incluir(): void {
     this.router.navigate([ './incluir' ], { relativeTo: this.activeRouter.parent });
   }
 
-  editar(matricula: Matricula): void {
+  public editar(matricula: Matricula): void {
     localStorage.setItem('[matricula][editar]', JSON.stringify(matricula));
     this.router.navigate([ './editar' ], { relativeTo: this.activeRouter.parent });
   }
 
-  excluir(matricula: Matricula): void {
+  public excluir(matricula: Matricula): void {
     localStorage.setItem('[matricula][excluir]', JSON.stringify(matricula));
     this.router.navigate([ './excluir' ], { relativeTo: this.activeRouter.parent });
   }
 
-  visualizar(matricula: Matricula): void {
+  public visualizar(matricula: Matricula): void {
     localStorage.setItem('[matricula][visualizar]', JSON.stringify(matricula));
     this.router.navigate([ './visualizar' ], { relativeTo: this.activeRouter.parent });
   }

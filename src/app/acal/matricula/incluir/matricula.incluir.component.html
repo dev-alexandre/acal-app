@@ -6,36 +6,86 @@
       <div class="card">
         
         <div class="header">
-          <h2>Incluir Grupo Consumo</h2>
+          <h2>Incluir Matrícula</h2>
         </div>
         
-        <div class="body">
-          <div class="form-group">
+        <div class="body row">
           
-            <label>* Categoria:</label>
-                      
-            <input 
-              type="text" 
-              class="form-control"
-              formControlName="nome"
-              [ngClass]="
-              {
-                'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
-              }">
+          <div class="col-md-8 col-12">
+
+            <div class="form-group">
+              <label>* Logradouro:</label>
+             
+              <app-selecionar-logradouro
+                [submetido]=submited
+                [valido]=logradouro.valid
+                (setValue)=setLogradouro($event)
+              >
+              </app-selecionar-logradouro>
+
+            </div>
+            
+          </div>
+          
+          <div class="col-md-2 col-6">
+
+            <div class="form-group">
+              <label>* Número:</label>
+              
+              <input 
+                type="text" 
+                class="form-control"
+                mask="0*"
+                formControlName="numero"
+                [ngClass]="
+                {
+                  'is-invalid': submited && numero.invalid , 
+                  'is-valid': (numero.valid && numero.touched) 
+                }"
+              >
   
-            <span class="invalid-feedback" *ngIf="nome.hasError('required')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('required')">
               Campo é Obrigatório
             </span>
 
-            <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('minlength')">
               Esse campo exige pelo menos 3 caracteres
             </span>
               
-            <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
+            <span class="invalid-feedback" *ngIf="numero.hasError('maxlength')">
               Esse campo exige no maximo 50 caracteres
             </span>
+            </div>
+
           </div>
+          
+          <div class="col-md-2 col-6">
+
+            <div class="form-group">
+              <label>* Letra:</label>
+              <input 
+                type="text" 
+                class="form-control"
+                mask="S*"
+                formControlName="letra"
+                [ngClass]="
+                {
+                  'is-invalid': submited && letra.invalid , 
+                  'is-valid': (letra.valid && letra.touched) 
+                }"
+              >
+
+          <span class="invalid-feedback" *ngIf="letra.hasError('required')">
+            Campo é Obrigatório
+          </span>
+
+          <span class="invalid-feedback" *ngIf="letra.hasError('minlength')">
+            Esse campo exige pelo menos 3 caracteres
+          </span>
+            </div>
+
+          </div>
+
         </div>
         
         

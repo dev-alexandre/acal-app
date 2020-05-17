@@ -9,6 +9,12 @@ import { Categoria } from '@app/acal/categoria/categoria.modelo';
 export class SelecionarCategoriaComponent implements OnInit{
 
   @Input()
+  public valido: boolean;
+
+  @Input()
+  public submetido: boolean;
+
+  @Input()
   public categoria: Categoria;
 
   @Output()
@@ -19,6 +25,7 @@ export class SelecionarCategoriaComponent implements OnInit{
   ngOnInit(): void {
 
     this.categorias = [];
+    this.categorias.push({nome: 'Selecione'});
     this.categorias.push({nome: 'Sócio Fundador'});
     this.categorias.push({nome: 'Sócio Efetivo'});
     this.categorias.push({nome: 'Sócio Temporario'});
@@ -30,7 +37,24 @@ export class SelecionarCategoriaComponent implements OnInit{
   }
 
   public onModelChange(categoria: Categoria) {
-    this.setCategoria.emit(categoria);
+
+    if (categoria.nome === 'Selecione') {
+      this.setCategoria.emit(null);
+    } else {
+      this.setCategoria.emit(categoria);
+    }
+
   }
 
+  public compare(a: Categoria, b: Categoria) {
+
+    if (a && a.nome && b && b.nome) {
+
+      if (a.nome === b.nome) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

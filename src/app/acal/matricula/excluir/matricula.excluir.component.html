@@ -1,37 +1,92 @@
-<div class="row clearfix">
-  <div class="col-12">
-
-    <div class="card">
+  <div *ngIf="data" class="row clearfix">
+    <div class="col-12">
       
-      <div class="header">
-        <h2>Visualizar Parâmetro</h2>
-      </div>
-
-      <div class="body">
-
-        <div class="form-group">
-          <label>Nome:</label>
-          <input  
-            [disabled]="true"
-            [(ngModel)]="data.nome" 
-            class="form-control " 
-            name="text" 
-            >
+      <div class="card">
+        
+        <div class="header">
+          <h2>Excluir Matrícula</h2>
         </div>
-
-      </div>
-
-
-      <div class="footer mb-4">
+        
+        <div class="body row">
           
-        <div class="col">
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
-            <button class="btn btn-outline-danger" type="button" (click)="excluir()" >Excluir</button>
+          <div class="col-md-4 col-12">
+
+            <div class="form-group">
+              <label>* Tipo:</label>
+              <input 
+                type="text" 
+                class="form-control"
+                [disabled]=true
+                [(ngModel)]=data.logradouro.tipoLogradouro.nome
+              >
+            </div>
+            
           </div>
+
+          <div class="col-md-8 col-12">
+
+            <div class="form-group">
+              <label>* Logradouro:</label>
+             
+              <input 
+                type="text" 
+                class="form-control"
+                [disabled]=true
+                [(ngModel)]=data.logradouro.nome
+              >
+            </div>
+            
+          </div>
+          
+          <div class="col-md-3 col-6">
+
+            <div class="form-group">
+              <label>* Número:</label>
+              
+              <input 
+                type="text" 
+                class="form-control"
+                [disabled]=true
+                [(ngModel)]=data.numero
+              > 
+            </div>
+
+          </div>
+          
+          <div class="col-md-3 col-6">
+
+            <div class="form-group">
+              <label>* Letra:</label>
+              <input 
+                type="text" 
+                class="form-control"
+                [disabled]=true
+                [(ngModel)]=data.letra
+              >
+
+            </div>
+
+          </div>
+
         </div>
-     
+        
+        
+        <div class="footer mb-4">
+          
+            <div class="col">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
+                <button class="btn btn-outline-danger" (click)="excluir()" type="button">Excluir</button>
+              </div>
+            </div>
+
+          
+        </div>
+        
+      </div>
+      
     </div>
 
+    
   </div>
-</div>
+  

@@ -37,7 +37,7 @@ export class BoletoExcluirComponent implements OnInit {
     this.data = this.form.value;
 
     this.service
-      .deletarPorNome(this.data.numero)
+      .deletar(this.data.numero)
         .subscribe(
           () => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });

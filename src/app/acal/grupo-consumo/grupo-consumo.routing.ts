@@ -57,6 +57,7 @@ const routes: Routes = [
           component: GrupoConsumoListarComponent,
           data:
           {
+            roles: [FuncaoEnum.Especialista],
             title: ':: Acal Web :: Grupo Consumo :: Listar ::',
           }
         },
@@ -67,6 +68,7 @@ const routes: Routes = [
           component: GrupoConsumoVisualizarComponent,
           data:
           {
+            roles: [FuncaoEnum.Especialista],
             title: ':: Acal Web :: Grupo Consumo :: Visualizar ::',
           }
         },

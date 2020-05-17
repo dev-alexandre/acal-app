@@ -1,5 +1,5 @@
 import { ElementoFiltro } from '@app/pacotes/filtro/_index';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoConsumoFiltro } from '@app/pacotes/filtro/grupo-consumo.filtro';
 import { Table } from '@app/pacotes/modelo/_index';
@@ -53,8 +53,14 @@ export class GrupoConsumoListarComponent implements OnInit {
   }
 
   public setCategoria(categoria: Categoria): void {
-    this.filtro.categoria = new ElementoFiltro();
-    this.filtro.categoria.valor = categoria.nome;
+
+    if (categoria) {
+      this.filtro.categoria = new ElementoFiltro();
+      this.filtro.categoria.valor = categoria.nome;
+    } else {
+      this.filtro.categoria = new ElementoFiltro();
+    }
+
     this.buscar();
   }
 

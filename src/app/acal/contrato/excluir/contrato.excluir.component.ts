@@ -37,7 +37,7 @@ export class ContratoExcluirComponent implements OnInit {
     this.data = this.form.value;
 
     this.service
-      .deletarPorNome(this.data.numero)
+      .deletar(this.data.id)
         .subscribe(
           (response) => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });

@@ -5,8 +5,11 @@ import { BaseService } from '@app/pacotes/servico/base.service';
 import { environment } from 'environments/environment';
 import { GrupoConsumo } from './grupo-consumo.modelo';
 import { GrupoConsumoFiltro } from '@app/pacotes/filtro/grupo-consumo.filtro';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GrupoConsumoService extends BaseService<GrupoConsumo, GrupoConsumoFiltro>  {
 
   getServico(): string {

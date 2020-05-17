@@ -47,24 +47,7 @@ export class AnaliseListarComponent implements OnInit {
         this.filtro.referencia.referencia = new ElementoFiltro();
         this.toast.info(mes + ': não é um Mês valido');
 
-      } else if ( (anoAtual - 10) < ano ) {
-
-
-        this.filtro.referencia = new ReferenciaFiltro();
-        this.filtro.referencia.referencia = new ElementoFiltro();
-        this.toast.info('Escolha um ano entre: ' + (anoAtual - 10) + ' e ' + (anoAtual + 10));
-
-      } else if ( ano > (anoAtual + 10)) {
-
-        this.filtro.referencia = new ReferenciaFiltro();
-        this.filtro.referencia.referencia = new ElementoFiltro();
-
-        this.toast.info('Escolha um ano entre: ' + (anoAtual - 10) + ' e ' + (anoAtual + 10));
-
       }
-
-
-
 
     }
   }

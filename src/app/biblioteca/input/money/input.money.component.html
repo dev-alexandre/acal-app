@@ -1,0 +1,23 @@
+<input 
+  type="text"
+  class="form-control"
+  mask="separator.2"
+  [(ngModel)]=value
+  (change)=ngModelChange($event)
+  prefix="R$ "
+  [disabled]=disabled
+  [ngClass]="
+  {
+    'is-valid': submetido && valido,
+    'is-invalid': submetido && !valido 
+  }"
+>
+
+<span class="valid-feedback" *ngIf="submetido && valido">
+  Válido
+</span>
+
+<span class="invalid-feedback" *ngIf="submetido && !valido">
+  Esse campo é Obrigatório
+</span>
+

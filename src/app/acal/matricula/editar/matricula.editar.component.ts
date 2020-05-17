@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Matricula } from '../matricula.modelo';
 import { MatriculaService } from '../matricula.service';
+import { Logradouro } from '@app/acal/logradouro/logradouro.modelo';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-matricula-editar',
@@ -11,12 +13,13 @@ import { MatriculaService } from '../matricula.service';
 
 export class MatriculaEditarComponent implements OnInit {
 
-  public data: Matricula;
   public form: FormGroup;
   public submited: boolean;
+  public data: Matricula;
 
   constructor(
     public router: Router,
+    public toast: ToastrService,
     public activeRouter: ActivatedRoute,
     public service: MatriculaService) {
   }
@@ -24,6 +27,7 @@ export class MatriculaEditarComponent implements OnInit {
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('[matricula][editar]'));
     localStorage.removeItem('[matricula][editar]');
+
     if (!this.data) {
       this.voltar();
     }
@@ -39,14 +43,14 @@ export class MatriculaEditarComponent implements OnInit {
     }
 
     this.service
-      .atualizar(this.form.value)
+      .salvar(this.form.value)
         .subscribe(
           (response) => {
             this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });
           },
 
         (response) => {
-
+          this.toast.info(response);
         }
     );
   }
@@ -59,18 +63,53 @@ export class MatriculaEditarComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      nome: new FormControl(
-        this.data.nome, [
+      id: new FormControl(
+        this.data.id, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50)
-      ]), }
+      ]),
+
+      numero: new FormControl(
+        this.data.numero, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+      letra: new FormControl(
+        this.data.letra, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+      logradouro: new FormControl(
+        this.data.logradouro, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]),
+
+      }
     );
 
   }
 
-  get nome() {
-    return this.form.get('nome');
+  public setLogradouro(logradouro: Logradouro){
+    this.form.patchValue({
+      logradouro: logradouro
+    });
+  }
+
+  get numero() {
+    return this.form.get('numero');
+  }
+
+  get letra() {
+    return this.form.get('letra');
+  }
+
+  get logradouro() {
+    return this.form.get('logradouro');
   }
 
 }

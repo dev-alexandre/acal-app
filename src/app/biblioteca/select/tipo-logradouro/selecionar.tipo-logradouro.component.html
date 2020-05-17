@@ -1,0 +1,28 @@
+<select 
+  [ngModel]="data"
+  (ngModelChange)="onModelChange($event)" 
+  [compareWith]="compare"
+  [disabled]=disabled
+  class="form-control" 
+
+  [ngClass]="
+  {
+    'is-valid':  (valido  && submetido), 
+    'is-invalid': (!valido && submetido) 
+  }"
+  >
+  <option 
+    *ngFor="let c of datas" 
+    [ngValue]=c> 
+    {{c.nome}} 
+  </option>
+
+</select>
+
+<span class="invalid-feedback" *ngIf="(!valido && submetido)">
+  Tipo Logradouro é Obrigatório
+</span>
+
+<span class="valid-feedback" *ngIf="(valido && submetido)">
+  Valido
+</span>

@@ -7,7 +7,7 @@ import { Matricula } from '../matricula.modelo';
     templateUrl: './matricula.visualizar.component.html',
 })
 
-export class MatriculaVisualizarComponent implements OnInit, OnDestroy {
+export class MatriculaVisualizarComponent implements OnInit{
 
   public data: Matricula;
 
@@ -18,11 +18,9 @@ export class MatriculaVisualizarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('[matricula][visualizar]'));
-  }
-
-  ngOnDestroy(): void {
     localStorage.removeItem('[matricula][visualizar]');
   }
+
 
   voltar(): void {
     this.router.navigate([ './listar' ], { relativeTo: this.activeRouter.parent });

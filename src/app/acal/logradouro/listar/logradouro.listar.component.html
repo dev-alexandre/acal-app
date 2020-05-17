@@ -59,11 +59,10 @@
         </th>
 
         <th>
-          <input 
-            class="form-control"
-            [(ngModel)]="filtro.nome.valor" 
-            (keyup.enter)="buscar()" 
-           />
+          <app-selecionar-tipo-logradouro
+            (setValue)=setTipoLogradouro($event)
+          >
+          </app-selecionar-tipo-logradouro>
         </th>
 
         <th>
@@ -95,7 +94,7 @@
           </button>
         </td>
 
-        <td> {{data.tipoLogradouro.nome}} </td>
+        <td> {{data.tipoLogradouro?.nome}} </td>
         
         <td> {{data.nome}} </td>
 

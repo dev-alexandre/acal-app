@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
+<form  [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
   
   <div class="row clearfix">
     <div class="col-12">
@@ -9,26 +9,57 @@
           <h2>Incluir Grupo Consumo</h2>
         </div>
         
-        <div class="body">
-          <div class="form-group">
+        <div class="body row">
+
+          <div class="form-group col-md-4 col-12">
           
             <label>* Categoria:</label>
-                      
+  
+            <app-selecionar-categoria 
+              [valido]= (categoria.valid)
+              [submetido]= (submited)
+              (setCategoria)="setCategoria($event)">
+            </app-selecionar-categoria>
+            
+          </div>
+
+          <div class="form-group col-md-4 col-12">
+          
+            <label>* Nome:</label>
+  
             <input 
-              type="text" 
-              class="form-control"
-              formControlName="nome"
+              formControlName="nome" 
+              placeholder="Nome"
+              class="form-control" 
               [ngClass]="
               {
                 'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
-              }">
-  
+                'is-valid': nome.valid && nome.touched
+              }"
+            >
+
             <span class="invalid-feedback" *ngIf="nome.hasError('required')">
-              Campo é Obrigatório
+              Nome é Obrigatório
+            </span>
+            
+            <span class="valid-feedback" *ngIf="nome.valid">
+              Valido
             </span>
             
           </div>
+          
+          <div class="form-group col-md-4 col-12">
+          
+            <label>* Valor:</label>
+
+            <app-input-money 
+              [submetido]=submited
+              [valido]=valor.valid
+              (setValue)="setValue($event)">
+            </app-input-money>
+            
+          </div>
+
         </div>
         
         
@@ -40,7 +71,6 @@
                 <button class="btn btn-outline-success" type="submit" >Salvar</button>
               </div>
             </div>
-
           
         </div>
         

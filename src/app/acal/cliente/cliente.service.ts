@@ -5,8 +5,9 @@ import { environment } from 'environments/environment';
 import { Cliente } from './cliente.modelo';
 import { ClienteFiltro } from '@app/pacotes/filtro/cliente.filtro';
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ClienteService extends BaseService<Cliente, ClienteFiltro>  {
 
   getServico(): string {

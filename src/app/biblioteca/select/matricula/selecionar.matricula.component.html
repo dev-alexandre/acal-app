@@ -1,0 +1,32 @@
+<select 
+  class="form-control" 
+  [ngModel]="data"
+  (ngModelChange)="onModelChange($event)" 
+  [compareWith]="compare"
+  [disabled]=disabled
+  [ngClass]="
+  {
+    'is-valid':  (valido && submetido), 
+    'is-invalid': (!valido && submetido) 
+  }"
+  >
+  <option [ngValue]=null >
+    Selecione
+  </option>
+
+  <optgroup label="{{item.nome}}" *ngFor="let item of datas">
+    <option *ngFor="let matricula of item.lista" [ngValue]=matricula >
+      {{matricula.logradouro.tipoLogradouro.nome +' '+matricula.logradouro.nome}}
+      {{matricula.numero +'/'+matricula.letra | uppercase }}
+    </option>
+  </optgroup>
+
+</select>
+
+<span class="invalid-feedback" *ngIf="(!valido && submetido)">
+  Matricula é Obrigatório
+</span>
+
+<span class="valid-feedback" *ngIf="(valido && submetido)">
+  Válido
+</span>

@@ -30,12 +30,6 @@
       <div id="navbar-menu">
         <ul class="nav navbar-nav">
 
-          <li>
-            <a (click)="onLogout()" class="icon-menu">
-              <i class="icon-login"></i>
-            </a>
-          </li>
-          
           <li class="dropdown" ngbDropdown>
             <a class="dropdown-toggle icon-menu" ngbDropdownToggle>
               <i class="icon-bell"></i>
@@ -69,8 +63,13 @@
             </ul>
           </li>
 
-
           
+          <li>
+            <a (click)="onLogout()" class="icon-menu">
+              <i class="icon-login"></i>
+            </a>
+          </li>
+
           <!--
           <li>
             <a [routerLink]="['/admin/file-manager/file-documents']" class="icon-menu d-none d-sm-block d-md-none d-lg-block">

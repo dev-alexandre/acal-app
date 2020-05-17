@@ -11,7 +11,14 @@ const routes: Routes = [
       [
         {
           path: '',
-          redirectTo: 'parametro',
+          redirectTo: 'home',
+        },
+
+        {
+          path: 'home' , canActivate: [AuthGuard],
+          loadChildren:
+            () => import('app/acal/home/home.module')
+            .then(m => m.HomeModule)
         },
 
         {

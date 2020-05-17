@@ -5,6 +5,8 @@ import { AtualizacaoService } from '@app/pacotes/servico/_index';
 import { Logradouro } from '../logradouro.modelo';
 import { LogradouroFiltro } from '../Logradouro.filtro';
 import { LogradouroService } from '../logradouro.service';
+import { TipoLogradouro } from '@app/acal/tipo-logradouro/tipo-logradouro.modelo';
+import { ElementoFiltro } from '@app/pacotes/filtro/_index';
 
 @Component({
     selector: 'app-logradouro-listar',
@@ -14,7 +16,6 @@ import { LogradouroService } from '../logradouro.service';
 export class LogradouroListarComponent implements OnInit {
 
   public table: Table<Logradouro>;
-
   public filtro: LogradouroFiltro;
 
 
@@ -47,6 +48,19 @@ export class LogradouroListarComponent implements OnInit {
 
   public setFiltro(filtro: LogradouroFiltro) {
     this.filtro = filtro;
+    this.buscar();
+  }
+
+  public setTipoLogradouro(tipologradouro: TipoLogradouro): void {
+    if (tipologradouro) {
+
+      this.filtro.tipoLogradouro.valor = tipologradouro.nome;
+
+    } else {
+
+      this.filtro.tipoLogradouro = new ElementoFiltro();
+    }
+
     this.buscar();
   }
 

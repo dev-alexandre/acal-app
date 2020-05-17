@@ -9,36 +9,169 @@
           <h2>Incluir Contrato</h2>
         </div>
         
-        <div class="body">
-          <div class="form-group">
-          
-            <label>* nome:</label>
-                      
-            <input 
-              type="text" 
-              class="form-control"
-              formControlName="nome"
-              [ngClass]="
-              {
-                'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
-              }">
-  
-            <span class="invalid-feedback" *ngIf="nome.hasError('required')">
-              Campo é Obrigatório
-            </span>
+        <div class="body row">
 
-            <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
-              Esse campo exige pelo menos 3 caracteres
-            </span>
-              
-            <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
-              Esse campo exige no maximo 50 caracteres
-            </span>
+          <div class="form-group col-md-8 col-12">
+            <label>* Número:</label>
+            <input 
+              placeholder="Número"
+              class="form-control" 
+              [disabled]=true
+              [ngClass]="{'is-valid':submited}"
+            >
           </div>
+
+          <div class="form-group col-md-4 col-12">
+            <label>* Data de criação:</label>
+            <input 
+              placeholder="Data de criação"
+              class="form-control"
+              [(ngModel)]=dataCriacao
+              [disabled]=true
+              [ngClass]="{'is-valid':submited}"
+              [ngModelOptions]="{standalone: true}"
+            >
+          </div>
+
+          <div class="form-group col-12">
+            <label>* Cliente:</label>
+            <app-selecionar-cliente
+              [submetido]=submited
+              [valido]=cliente.valid
+              (setValue)=setCliente($event)
+            >
+              
+            </app-selecionar-cliente>
+          </div>
+        
+          <div class="form-group col-12" *ngIf="cliente?.value?.documento.lenght === 14">
+            <label>* Nome Fantasia:</label>
+            <input 
+              placeholder="Nome Fantasia"
+              class="form-control" 
+            >
+          </div>
+        
+          <div class="form-group col-12">
+            <label>* Matrícula:</label>
+            <app-selecionar-matricula
+              [submetido]=submited
+              [valido]=matricula.valid
+              (setValue)=setMatricula($event)
+            >
+            </app-selecionar-matricula>
+          </div>
+         
+          <div class="form-group col-12">
+
+            <ng-container *ngIf="exibirSelecionarMatriculaCorrespondencia == null">
+              <label> A matrícula de correspondência é igual a de registro? </label>
+
+              <div class="fancy-radio">
+								<label>
+                  <input 
+                    name="gender" 
+                    (click)="exibirMatriculaCorrespondencia(true)"
+                     type="radio">
+                    <span>
+                      <i></i>
+                      Sim
+                    </span>
+                  </label>
+              </div>
+              
+							<div class="fancy-radio">
+								<label>
+                  <input 
+                    name="gender" 
+                    (click)="exibirMatriculaCorrespondencia(false)"
+                    type="radio">
+                    <span>
+                      <i></i>
+                      Não
+                    </span>
+                </label>
+              </div>
+
+            </ng-container>
+
+            <ng-container *ngIf="!exibirSelecionarMatriculaCorrespondencia">
+              
+              <label>* Matrícula de Correspondência:</label>
+              <app-selecionar-matricula
+                [submetido]=submited
+                [valido]=matriculaCorrespondencia.valid
+                (setValue)=setMatriculaCorrespondencia($event)>
+              </app-selecionar-matricula>
+            </ng-container>
+
+          </div>
+
+          <div class="form-group col-md-8 col-12">
+            <label>* Grupo de consumo:</label>
+            <app-selecionar-grupo-consumo
+              [submetido]=submited
+              [valido]=grupoConsumo.valid
+              (setValue)=setGrupoConsumo($event)
+            >
+
+            </app-selecionar-grupo-consumo>
+          </div>
+       
+          <div class="form-group col-md-4 col-12">
+            <label>* Valor Mensal:</label>
+            
+            <input 
+              *ngIf="!grupoConsumo.value"
+              placeholder="Valor"
+              class="form-control" 
+              [disabled]=true
+              [ngClass]="{'is-invalid':(submited)}"
+            >
+
+            <app-input-money
+              *ngIf="grupoConsumo.value"
+              placeholder="Valor"
+              [disabled]=true
+              [value]=grupoConsumo.value.valor
+              (submetido)=submited
+              (valido)=submited
+            >
+
+            </app-input-money>
+
+          </div>
+          
+          <div class="form-group  col-12">
+            <label>* Esse é o contrato que será considerado na eleição? :</label>
+            
+            <div class="fancy-radio">
+              <label>
+                <input 
+                  name="gender" 
+                  (click)="setTipoContrato(true)"
+                   type="radio">
+                  <span>
+                    <i></i>
+                    Sim
+                  </span>
+                </label>
+            </div>
+            
+            <div class="fancy-radio">
+              <label>
+                <input 
+                  name="gender" 
+                  (click)="setTipoContrato(false)"
+                  type="radio"  >
+                  <span><i></i>Não</span>
+              </label>
+            </div>
+
+          </div>
+
         </div>
-        
-        
+
         <div class="footer mb-4">
           
             <div class="col">

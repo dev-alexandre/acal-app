@@ -6,35 +6,54 @@
       <div class="card">
         
         <div class="header">
-          <h2>Incluir Grupo Consumo</h2>
+          <h2>Incluir Tipo Logradouro</h2>
         </div>
         
-        <div class="body">
-          <div class="form-group">
-          
-            <label>* Categoria:</label>
-                      
-            <input 
-              type="text" 
-              class="form-control"
-              formControlName="nome"
-              [ngClass]="
-              {
-                'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
-              }">
-  
-            <span class="invalid-feedback" *ngIf="nome.hasError('required')">
-              Campo é Obrigatório
-            </span>
+        <div class="body row">
 
-            <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
-              Esse campo exige pelo menos 3 caracteres
-            </span>
-              
-            <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
-              Esse campo exige no maximo 50 caracteres
-            </span>
+
+          <div class="col-md-4 col-12">
+            <div class="form-group">
+
+              <label>* Tipo Logradouro:</label>
+              <app-selecionar-tipo-logradouro
+                (setValue)=setTipoLogradouro($event)
+                [submetido]=submited
+                [valido]=tipoLogradouro.valid
+              >
+              </app-selecionar-tipo-logradouro>
+            
+            </div>
+          </div>
+          
+          
+          <div class="col-md-8 col-12">
+            <div class="form-group">
+            
+              <label>* Nome:</label>
+                        
+              <input 
+                type="text" 
+                class="form-control"
+                formControlName="nome"
+                [ngClass]="
+                {
+                  'is-invalid': submited && nome.invalid , 
+                  'is-valid': (nome.valid && nome.touched) 
+                }">
+    
+              <span class="invalid-feedback" *ngIf="nome.hasError('required')">
+                Campo é Obrigatório
+              </span>
+
+              <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
+                Esse campo exige pelo menos 3 caracteres
+              </span>
+                
+              <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
+                Esse campo exige no maximo 50 caracteres
+              </span>
+            </div>
           </div>
         </div>
         

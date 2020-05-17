@@ -51,10 +51,22 @@ export class ContratoListarComponent implements OnInit {
 
   public ordernar(filtro: string): void {
 
-    if (filtro === 'nome') {
-      this.filtro.nome.orderAsc = (!this.filtro.nome.orderAsc);
+    if (filtro === 'numero') {
+      this.filtro.numero.orderAsc = (!this.filtro.numero.orderAsc);
     } else {
-      this.filtro.nome.orderAsc = null;
+      this.filtro.numero.orderAsc = null;
+    }
+
+    if (filtro === 'cliente') {
+      this.filtro.cliente.orderAsc = (!this.filtro.cliente.orderAsc);
+    } else {
+      this.filtro.cliente.orderAsc = null;
+    }
+
+    if (filtro === 'valor') {
+      this.filtro.valor.orderAsc = (!this.filtro.valor.orderAsc);
+    } else {
+      this.filtro.valor.orderAsc = null;
     }
 
     this.buscar();

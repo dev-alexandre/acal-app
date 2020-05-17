@@ -85,6 +85,10 @@ export class SidebarComponent implements OnInit , OnDestroy {
 
     dashboard.itens = [];
 
+    const home = new Item();
+    home.link = '/acal/home/dashboard';
+    home.titulo = 'Home';
+
     const analytical = new Item();
     analytical.link = '/admin/dashboard/index';
     analytical.titulo = 'Analytical';
@@ -93,6 +97,8 @@ export class SidebarComponent implements OnInit , OnDestroy {
     ioT.link = '/admin/dashboard/iot';
     ioT.titulo = 'IoT';
 
+
+    dashboard.itens.push(home);
     dashboard.itens.push(analytical);
     dashboard.itens.push(ioT);
 

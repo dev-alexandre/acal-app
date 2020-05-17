@@ -17,7 +17,6 @@ import { GrupoConsumoRouting } from './grupo-consumo.routing';
 import { NgxMaskModule } from 'ngx-mask';
 import { GrupoConsumoService } from './grupo-consumo.service';
 
-
 @NgModule({
   imports:
   [

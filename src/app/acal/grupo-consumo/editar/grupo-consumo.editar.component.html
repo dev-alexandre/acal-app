@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
+<form *ngIf="data" [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate> 
   
   <div class="row clearfix">
     <div class="col-12">
@@ -6,36 +6,63 @@
       <div class="card">
         
         <div class="header">
-          <h2>Incluir Grupo Consumo</h2>
+          <h2>Editar Grupo Consumo</h2>
         </div>
         
-        <div class="body">
-          <div class="form-group">
+        <div class="body row">
+
+          <div class="form-group col-md-4 col-12">
           
-            <label>* Nome:</label>
-                      
-            <input 
-              type="text" 
-              class="form-control"
-              formControlName="nome"
-              [ngClass]="
-              {
-                'is-invalid': submited && nome.invalid , 
-                'is-valid': (nome.valid && nome.touched) 
-              }">
+            <label>* Categoria:</label>
   
+            <app-selecionar-categoria 
+              [valido]= (categoria.valid)
+              [categoria]=data.categoria
+              [submetido]= (submited)
+              (setCategoria)="setCategoria($event)">
+            </app-selecionar-categoria>
+
             <span class="invalid-feedback" *ngIf="nome.hasError('required')">
               Campo é Obrigatório
             </span>
-
-            <span class="invalid-feedback" *ngIf="nome.hasError('minlength')">
-              Esse campo exige pelo menos 3 caracteres
-            </span>
-              
-            <span class="invalid-feedback" *ngIf="nome.hasError('maxlength')">
-              Esse campo exige no maximo 50 caracteres
-            </span>
+            
           </div>
+
+          <div class="form-group col-md-4 col-12">
+          
+            <label>* Nome:</label>
+  
+            <input 
+              formControlName="nome" 
+              placeholder="Nome"
+              class="form-control" 
+              [ngClass]="
+              {
+                'is-invalid': submited && nome.invalid , 
+                'is-valid': nome.valid && nome.touched
+              }"
+            >
+
+            <span class="invalid-feedback" *ngIf="nome.hasError('required')">
+              Campo é Obrigatório
+            </span>
+            
+          </div>
+          
+          <div class="form-group col-md-4 col-12">
+          
+            <label>* Valor:</label>
+            <app-input-money 
+              [submetido]=submited
+              [valido]=valor.valid
+              [value]="data.valor"
+              (setValue)="setValue($event)">
+            </app-input-money>
+          
+          </div>
+
+
+
         </div>
         
         
@@ -44,10 +71,9 @@
             <div class="col">
               <div class="d-flex justify-content-between">
                 <button class="btn btn-outline-secondary" (click)="voltar()" type="button">Voltar</button>
-                <button class="btn btn-outline-primary" type="submit" >Editar</button>
+                <button class="btn btn-outline-success" type="submit" >Salvar</button>
               </div>
             </div>
-
           
         </div>
         

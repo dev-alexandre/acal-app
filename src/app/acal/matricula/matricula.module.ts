@@ -15,6 +15,7 @@ import { MatriculaVisualizarComponent } from './visualizar/matricula.visualizar.
 import { MatriculaIncluirComponent } from './incluir/matricula.incluir.component';
 import { MatriculaListarComponent } from './listar/matricula.listar.component';
 import { MatriculaService } from './matricula.service';
+import { BibliotecaModule } from '@app/biblioteca/biblioteca.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatriculaService } from './matricula.service';
     FormsModule,
     MatriculaRouting,
     LayoutModule,
+    BibliotecaModule,
   ],
 
   declarations:

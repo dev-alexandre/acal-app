@@ -5,8 +5,11 @@ import { environment } from 'environments/environment';
 import { BaseService } from '@app/pacotes/servico/base.service';
 import { Filtro } from '@app/pacotes/filtro/filtro';
 import { Logradouro } from './logradouro.modelo';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LogradouroService extends BaseService<Logradouro, Filtro>  {
 
   getServico(): string {

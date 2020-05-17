@@ -6,7 +6,10 @@ import { BaseService } from '@app/pacotes/servico/base.service';
 import { Filtro } from '@app/pacotes/filtro/filtro';
 import { TipoLogradouro } from './tipo-logradouro.modelo';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class TipoLogradouroService extends BaseService<TipoLogradouro, Filtro>  {
 
   getServico(): string {
